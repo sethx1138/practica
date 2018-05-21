@@ -82,21 +82,21 @@ function htmlImage(file)
 	return("<div><img src='Images/" + file + "'></div>");
 }
 
-// Parameter "ind" is optional array of indices into "arr".
+// Parameter "map" is optional array of indices into "arr".
 // Should be the same size as "arr".
 
-function htmlList(arr, ind)
+function htmlList(arr, map)
 {
 	var i;
 
 	var list = "<OL type='a'>";
 
-	if(ind === undefined)
+	if(map === undefined)
 		for(i=0; i<arr.length; i++)
 			list = list + "<LI>" + arr[i] + "</LI>";
 	else
 		for(i=0; i<arr.length; i++)
-			list = list + "<LI>" + arr[ind[i]] + "</LI>";
+			list = list + "<LI>" + arr[map[i]] + "</LI>";
 
 	list += "</OL>";
 

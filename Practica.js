@@ -10,22 +10,23 @@ var qBox, qGroup, qTitle, qQuestion, qText, qInput, qResult;
 var cBox, cButtonP, cButtonA, cButtonO, cButtonN;
 var sBox, sTable;
 
-function createSelect(arr, selected, onChangeFunc)
+function createSelect(selNode, arr, selected, onChangeFunc)
 {
 	var i;
-	var sel, opt;
+	var opt;
 
-    var sel = document.createElement("SELECT");
-    sel.onchange = onChangeFunc;
+	while (selNode.hasChildNodes()) {  
+		selNode.removeChild(selNode.firstChild);
+	}
+
+    selNode.onchange = onChangeFunc;
     for(i=0; i<arr.length; i++)
     {
-        var opt = document.createElement("option");
+        var opt = document.createElement("OPTION");
         opt.text = arr[i].name;
-        sel.add(opt);
+        selNode.add(opt);
     }
-    sel.selectedIndex = selected.toString();
-
-	return(sel);
+    selNode.selectedIndex = selected.toString();
 }
 
 function changeSubject()
@@ -34,16 +35,14 @@ function changeSubject()
     CurrBlock = 0;
     CurrQuestion = 0;
 
-	var eBlockSelOld = eBlockSel;
-
-	eBlockSel = createSelect(Practice.subjects[CurrSubject].blocks, CurrBlock, changeBlock);
-	eBox.replaceChild(eBlockSel, eBlockSelOld);
+	// Update block selector.
+	createSelect(eBlockSel, Practice.subjects[CurrSubject].blocks, CurrBlock, changeBlock);
 
 	// Load new question.
 	showQuestion();
 
-    //eSpan.innerHTML = "Preguntas: " + Questions[CurrSubject].length;
-   
+	showNumQuest();
+
     //showScores();
 
     // Update cookies
@@ -61,8 +60,8 @@ function changeBlock()
 	// Load new question.
 	showQuestion();
 
-    //eSpan.innerHTML = "Preguntas: " + Questions[CurrSubject].length;
-   
+	showNumQuest();
+
     //showScores();
 
     // Update cookies
@@ -165,15 +164,14 @@ function fmtInput(input)
 	return(arr.join(", "));
 }
 
-function fmtMultiple(arr)
+function fmtMultiple(arr, map)
 {
-	var i, ansStr;
+	var i, tmp=[];
 
-	ansStr = String.fromCharCode(arr[0] + 97);
-	for(i=1; i<arr.length; i++)
-		ansStr = ansStr + ", " + String.fromCharCode(arr[i] + 97);
+	for(i=0; i<arr.length; i++)
+		tmp[i] = String.fromCharCode(map.indexOf(arr[i]) + 97);
 
-	return(ansStr);
+	return(tmp.sort().join(", "));
 }
 
 function checkAnswer(e)
@@ -188,9 +186,9 @@ function checkAnswer(e)
 	else if(Q.type == "string")
 		match = (qInput.value.toUpperCase() == Q.answer.toUpperCase());
 	else if(Q.type == "choice")
-		match = (qInput.value.toLowerCase().charCodeAt(0) - 97 == Q.answer);
+		match = (qInput.value.toLowerCase().charCodeAt(0) - 97 == Q.map.indexOf(Q.answer));
 	else if(Q.type == "multiple")
-		match = (fmtInput(qInput.value) == fmtMultiple(Q.answer))
+		match = (fmtInput(qInput.value) == fmtMultiple(Q.answer, Q.map))
 	else
 		match = (qInput.value == Q.answer);
 
@@ -229,6 +227,12 @@ function checkAnswer(e)
 
 }
 
+function showNumQuest()
+{
+	var numQuest = Practice.subjects[CurrSubject].blocks[CurrBlock].questions.length;
+    eSpan.innerHTML = "(Preguntas: " + numQuest + ")"
+}
+   
 function showQuestion()
 {
     Q = Practice.subjects[CurrSubject].blocks[CurrBlock].questions[CurrQuestion];
@@ -240,7 +244,7 @@ function showQuestion()
 		qGroup.innerHTML = "";
 
     qTitle.innerHTML = "Pregunta " + (CurrQuestion + 1);
-    qText.innerHTML = Q.text;
+    qText.innerHTML = Q.text + htmlList(Q.options, Q.map)
     qResult.innerHTML ="Ingresa tu respuesta.";
 
     qInput.value = "";
@@ -261,9 +265,9 @@ function showAnswer()
     Q = Practice.subjects[CurrSubject].blocks[CurrBlock].questions[CurrQuestion];
 
 	if(Q.type == "choice")
-		qResult.innerHTML = "La respuesta es: " + String.fromCharCode(Q.answer + 97);
+		qResult.innerHTML = "La respuesta es: " + String.fromCharCode(Q.map.indexOf(Q.answer) + 97);
 	else if(Q.type == "multiple")
-		qResult.innerHTML = "La respuesta es: " + fmtMultiple(Q.answer);
+		qResult.innerHTML = "La respuesta es: " + fmtMultiple(Q.answer, Q.map);
 	else
 		qResult.innerHTML = "La respuesta es: " + Q.answer;
 }
@@ -303,12 +307,20 @@ function Practica()
     eBox.appendChild(span);
 
 	// Create subject selection.
-	eSubjectSel = createSelect(Practice.subjects, CurrSubject, changeSubject);
+    eSubjectSel = document.createElement("SELECT");
+	createSelect(eSubjectSel, Practice.subjects, CurrSubject, changeSubject);
 	eBox.appendChild(eSubjectSel);
 
 	// Create block selection.
-	eBlockSel = createSelect(Practice.subjects[CurrSubject].blocks, CurrBlock, changeBlock);
+    eBlockSel = document.createElement("SELECT");
+	createSelect(eBlockSel, Practice.subjects[CurrSubject].blocks, CurrBlock, changeBlock);
     eBox.appendChild(eBlockSel);
+
+    eSpan = document.createElement("SPAN");
+    eSpan.style.paddingLeft = "2em"
+    eSpan.style.paddingRight = "1em"
+    eBox.appendChild(eSpan);
+	showNumQuest();
 
 	//logObjects();
 

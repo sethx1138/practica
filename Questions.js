@@ -50,10 +50,13 @@ function Question(type)
 	this.group = "";
 	this.text = "";
 	this.options = [];
+	this.map = [];
 
 	this.init = function()
 	{
-		// Call user-define initializaion.
+		var i;
+
+		// Call user-defined initializaion.
 		// Should initialize "text" and "answer".
 		// Can initialize "options".
 		if(this.userInit !== undefined)
@@ -62,6 +65,23 @@ function Question(type)
 			this.text = "";
 			this.options = [];
 			this.userInit();
+		}
+
+		// Create a random map to scramble the options
+		// for simple multiple-choice, and complex multiple-choice.
+		if(this.type == "choice" || this.type == "multiple")
+		{
+			var i, ind, ret;
+
+			this.map = [];
+			for(i=0; i<this.options.length; i++)
+			{
+				do {
+					ind = Math.floor(this.options.length*Math.random());
+					ret = this.map.indexOf(ind);
+				} while(ret != -1)
+				this.map[i] = ind;
+			}
 		}
 	}
 
@@ -101,13 +121,8 @@ function Question(type)
 		// Save group.
 		SavedGroup = this.group;
 
+		// Save options.
 		if(this.options.length > 0)
-		{
-			// Save options.
 			SavedOptions = this.options;
-
-			// Add options to question text.
-			this.text = this.text + htmlList(this.options);
-		}
 	}
 }

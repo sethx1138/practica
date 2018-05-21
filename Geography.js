@@ -23,7 +23,7 @@ Q.userInit = function()
 
 	var ans = getRand(0, 1, 3);
 
-	this.addText("¿Qué opción muestra únicamente un conjunto de componentes naturales?");
+	this.addText("¿Qué opción muestra únicamente un conjunto de componentes <I>naturales</I>?");
 
 	for(i=0; i<4; i++)
 	{
@@ -43,21 +43,34 @@ Q.userInit = function()
 }
 
 Q = B.addQuestion("choice");
-Q.userInit = function()
-{
-	var phrases = ["un espacio geográfico relativamente homogéneo",
-					"un espacio con componentes naturales, sociales, culturales, y económicos similares",
-					"una percepción del espacio geográfico",
-					"un espacio delimitado por fronteras"];
+Q.setGroup("Los espacios geográficos.");
+Q.addText("¿Cómo se llama un espacio geográfico relativamente homogéneo?");
+Q.addOption("Región.", "Medio.", "Paisaje.", "Territorio.", "Lugar.");
+Q.setAnswer(0);
 
-	var ind = getRand(0, 1, phrases.length-1)
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("¿Cómo se llama un espacio con componentes naturales, sociales, culturales, y económicos similares?");
+Q.addOption();
+Q.setAnswer(1);
 
-	this.addText("¿Cómo se llama " + phrases[ind] + "?");
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("¿Cómo se llama una percepción del espacio geográfico?");
+Q.addOption();
+Q.setAnswer(2);
 
-	this.addOption("Región", "Medio", "Paisaje", "Territorio");
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("¿Cómo se llama un espacio delimitado por fronteras?");
+Q.addOption();
+Q.setAnswer(3);
 
-	this.setAnswer(ind);
-}
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("¿Cómo se llama un espacio que se ubica por un nombre o por sus coordenadas exactas?");
+Q.addOption();
+Q.setAnswer(4);
 
 Q = B.addQuestion("choice");
 Q.addText("¿Cuál es la importancia de la escala gráfica a diferencia de la escala numérica si se modifica el tamaño del mapa?");
@@ -103,7 +116,7 @@ Q.addText("pero sí da elementos de las condiciones ambientales del lugar, como 
 Q.addOption("latitud", "altitud", "altura", "longitud");
 Q.setAnswer(1);
 
-Q = B.addQuestion("string");
+Q = B.addQuestion("choice");
 Q.userInit = function()
 {
 	var optionsYes = ["Trópico de Cáncer", "Trópico de Capricornio", "Ecuador", "Meridiano", "Meridiano Cero", "Círculo Polar Ártico", "Círculo Polar Antártico"];
@@ -120,6 +133,74 @@ Q.userInit = function()
 
 	this.setAnswer(3);
 }
+
+Q = B.addQuestion("multiple");
+Q.addText("El espacio geográfico está constituido por cuales tres componentes que interactúan e influyen en su conformación:");
+Q.addOption("<B>Sociales:</B> son el resultado de actividades humanes, como las expresiones artśticas.");
+Q.addOption("<B>Naturales:</B> corresponden a las características físicas de la Tierra, como ríos, montañas, minerales, clima, entre otros.");
+Q.addOption("<B>Económicos:</B> provienen del aprovechamiento de los recursos naturales, su transformación, servicios y actividades que impliquen trabajo, por ejemplo la agricultura, minería, hotelería, entre otros.");
+Q.addOption("<B>Tecnológicos:</B> uso de la ciencia y técnica para interpretar los espacios geográficos, por ejemplo SIG y GPS.");
+Q.setAnswer([0, 1, 2]);
+
+Q = B.addQuestion("choice");
+Q.addText("Es la superficie terrestre transformada continuamente por la interacción entre la naturaleza y la sociedad.");
+Q.addText("¿A qué se refiere?");
+Q.addOption("Al espacio geográfico.");
+Q.addOption("Al espacio humanizado.");
+Q.addOption("A la corteza continental.");
+Q.addOption("A la corteza terrestre.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Si tuvieras que hacer una pirámide poblacional de México, ¿qué fuentes de información geográfica utilizarías?");
+Q.addOption("Documentales y cartográficas.");
+Q.addOption("Gráficas y estadisticas..");
+Q.addOption("Cartográficas.");
+Q.addOption("Gráficas.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("multiple");
+Q.addText("¿Las formas de representación del espacio geográfic son principlamente el mapa, el plano y que otras tres?");
+Q.addOption("Globo terráqueo.", "Grafismo", "Croquis", "Atlas");
+Q.setAnswer([0, 2, 3]);
+
+Q = B.addQuestion("choice");
+Q.setGroup("Las proyecciones cartográficas permiten reducir las deformaciones de las representaciones de una superficie esférica a un plano.");
+Q.addText("Esta proyección se construye envolviendo la superficie de la tierra con un cilindro.");
+Q.addOption("Proyección azimutal.", "Proyección cónica", "Proyección de Mercator.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Esta proyección consiste en proyectar la superficie terrestre sobre un plano tangente.");
+Q.addOption();
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Los componentes <I>sociales</I> del espacio geográfico se caracterizan por");
+Q.addOption("estar relacionados con la población y sus costumbres.");
+Q.addOption("estar relacionados con el relieve y la vegetación.");
+Q.addOption("aprovechar industrialmente los productos.");
+Q.addOption("formar parte de las actividades productivas.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Es el medio donde se concentran la mayores cantidades de población.");
+Q.addOption("Ciudades.", "Territorios.", "Poblaciones.", "Países.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("Es la proyección más adecuada para localizar los volcanes del continente antártico.");
+Q.addOption("De Peters.", "Cónica.", "Cilíndrica.", "Azimutal.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("Escoge el enunciado que se relaciona con la categoría de territorio.");
+Q.addOption("<B>La Reserva de la Biosfera del Vizcaíno</B> en Baja California Sur, posee una extensa reserva faunística que cubre más de 500,000 hectáras.");
+Q.addOption("<B>El Sistema Vocánico Transversal</B> tiene montañas que alcanzan más de 5000 msnm y sus cumbres están cubiertas de nieve.");
+Q.addOption("Debido a cantidad de poblaión <B>la ciudad de Guadalajara</B>, capital del estado de Jalisco, es la segunda ciudad más importante de México.");
+Q.addOption("<B>El estado de Chihuahua</B>, el estado mas grande de México, limita al norte con Estados Unidos de América, al sur con Durango, al este con Coajuila y al oeste con Sonora.");
+Q.setAnswer(3);
 
 /******************************************************************************\
 								Block 2 
@@ -161,6 +242,14 @@ Q.setAnswer(0);
 Q = B.addQuestion("choice");
 Q.addText("Tipo de corriente que transporta gran cantidad de nutrientes.");
 Q.addOption("Del Golfo", "Humboldt", "Ecuatorial del Norte", "Mozambique");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("Las estaciones del año se dan por");
+Q.addOption("cambios en la inclinación del eje terrestre.");
+Q.addOption("la forma elíptica de la órbita de la Tierra.");
+Q.addOption("el movimiento de traslación y la inclinación del eje terrestre.");
+Q.addOption("el movimiento de rotación y la inclinación del eje terrestre.");
 Q.setAnswer(1);
 
 /******************************************************************************\
