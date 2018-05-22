@@ -3,7 +3,8 @@ var CurrBlock=0;
 var CurrQuestion=0;
 
 // Nodes.
-var eBox, eSpan, eSubjectSel, eBlockSel;
+//var eBox, eSpan, eSubjectSel, eBlockSel;
+var eBox, eSubjectSel, eBlockSel;
 var qBox, qGroup, qTitle, qQuestion, qText, qInput, qResult;
 var cBox, cButtonP, cButtonA, cButtonO, cButtonN;
 var sBox, sTable;
@@ -39,7 +40,7 @@ function changeSubject()
 	// Load new question.
 	showQuestion();
 
-	showNumQuest();
+	//showNumQuest();
 
     showScores();
 
@@ -58,7 +59,7 @@ function changeBlock()
 	// Load new question.
 	showQuestion();
 
-	showNumQuest();
+	//showNumQuest();
 
     showScores();
 
@@ -225,11 +226,13 @@ function checkAnswer(e)
 
 }
 
+/*
 function showNumQuest()
 {
 	var numQuest = Practice.subjects[CurrSubject].blocks[CurrBlock].questions.length;
     eSpan.innerHTML = "<I>(Preguntas: " + numQuest + ")</I>"
 }
+*/
    
 function showQuestion()
 {
@@ -368,14 +371,35 @@ function Practica()
 	createSelect(eBlockSel, Practice.subjects[CurrSubject].blocks, CurrBlock, changeBlock);
     eBox.appendChild(eBlockSel);
 
-    eSpan = document.createElement("SPAN");
-	eSpan.style.fontSize = "75%";
-    eSpan.style.paddingLeft = "2em"
-    eSpan.style.paddingRight = "1em"
-    eBox.appendChild(eSpan);
-	showNumQuest();
+    //eSpan = document.createElement("SPAN");
+	//eSpan.style.fontSize = "75%";
+    //eSpan.style.paddingLeft = "2em"
+    //eSpan.style.paddingRight = "1em"
+    //eBox.appendChild(eSpan);
+	//showNumQuest();
 
 	//logObjects();
+
+// Score box.
+
+	// Create cell in layout table for scores.
+	sBox = document.createElement("TD");
+	sBox.rowSpan = "3";
+	sBox.vAlign = "top";
+	sBox.style.backgroundColor = "#DDFFDD";
+	sBox.style.border = "1px solid #AAFFAA";
+    sBox.style.padding = "10pt";
+	sBox.style.fontSize = "65%";
+	tr.appendChild(sBox);
+
+	// Initialize scores.
+	var s, b, q;
+	for(s=0; s<Practice.subjects.length; s++)
+	for(b=0; b<Practice.subjects[s].blocks.length; b++)
+	for(q=0; q<Practice.subjects[s].blocks[b].questions.length; q++)
+		Practice.subjects[s].blocks[b].questions[q].score = [q+1, 0, 0];		// Question, Right, Wrong
+
+	showScores();
 
 // Control box.
 
@@ -446,26 +470,4 @@ function Practica()
     qBox.appendChild(qResult);
 
 	showQuestion();
-
-// Score box.
-
-	tr = document.createElement("TR");
-	table.appendChild(tr);
-
-	// Create cell in layout table for scores.
-	sBox = document.createElement("TD");
-	sBox.style.backgroundColor = "#DDFFDD";
-	sBox.style.border = "1px solid #AAFFAA";
-    sBox.style.padding = "10pt";
-	sBox.style.fontSize = "65%";
-	tr.appendChild(sBox);
-
-	// Initialize scores.
-	var s, b, q;
-	for(s=0; s<Practice.subjects.length; s++)
-	for(b=0; b<Practice.subjects[s].blocks.length; b++)
-	for(q=0; q<Practice.subjects[s].blocks[b].questions.length; q++)
-		Practice.subjects[s].blocks[b].questions[q].score = [q+1, 0, 0];		// Question, Right, Wrong
-
-	showScores();
 }
