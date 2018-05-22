@@ -2,8 +2,6 @@ var CurrSubject=0;
 var CurrBlock=0;
 var CurrQuestion=0;
 
-//var Scores=[];
-
 // Nodes.
 var eBox, eSpan, eSubjectSel, eBlockSel;
 var qBox, qGroup, qTitle, qQuestion, qText, qInput, qResult;
@@ -43,7 +41,7 @@ function changeSubject()
 
 	showNumQuest();
 
-    //showScores();
+    showScores();
 
     // Update cookies
 
@@ -62,7 +60,7 @@ function changeBlock()
 
 	showNumQuest();
 
-    //showScores();
+    showScores();
 
     // Update cookies
 
@@ -194,7 +192,7 @@ function checkAnswer(e)
 
 	if(match)
 	{
-		//Scores[CurrSubject][CurrBlock][CurrQuestion][1]++;
+		Q.score[1]++;
 
 		// Disable "see answer" button.
 		cButtonA.disabled = true;
@@ -204,23 +202,23 @@ function checkAnswer(e)
 
 		var f = 0xDE00 + getRand(1, 1, 15);
 		var faceStr = String.fromCharCode(0xD83D, f);
-		var res = "Corecto! " + faceStr;
+		var res = "Correcto! " + faceStr;
 
-		//td = document.getElementById("std" + CurrQuestion + "_" + 1);
-		//nc = Number(td.innerHTML);
-		//td.innerHTML = nc + 1;
+		td = document.getElementById("std" + CurrQuestion + "_" + 1);
+		nc = Number(td.innerHTML);
+		td.innerHTML = nc + 1;
 	}
 	else
 	{
-		//Scores[CurrSubject][CurrBlock][CurrQuestion][2]++;
+		Q.score[2]++;
 
 		var f = 0xDE20 + getRand(1, 1, 15);
 		var faceStr = String.fromCharCode(0xD83D, f);
 		var res = "Lo siento. Intenta otra vez! " + faceStr;
 
-		//td = document.getElementById("std" + CurrQuestion + "_" + 2);
-		//nc = Number(td.innerHTML);
-		//td.innerHTML = nc + 1;
+		td = document.getElementById("std" + CurrQuestion + "_" + 2);
+		nc = Number(td.innerHTML);
+		td.innerHTML = nc + 1;
 	}
 
 	qResult.innerHTML = res;
@@ -230,7 +228,7 @@ function checkAnswer(e)
 function showNumQuest()
 {
 	var numQuest = Practice.subjects[CurrSubject].blocks[CurrBlock].questions.length;
-    eSpan.innerHTML = "(Preguntas: " + numQuest + ")"
+    eSpan.innerHTML = "<I>(Preguntas: " + numQuest + ")</I>"
 }
    
 function showQuestion()
@@ -270,6 +268,60 @@ function showAnswer()
 		qResult.innerHTML = "La respuesta es: " + fmtMultiple(Q.answer, Q.map);
 	else
 		qResult.innerHTML = "La respuesta es: " + Q.answer;
+}
+
+function showScores()
+{
+	if(sTable !== undefined)
+		sBox.removeChild(sTable);
+
+    sTable = document.createElement("TABLE");
+    sTable.style.backgroundColor = "#FDFFFD";
+    sTable.style.border = "1px solid #AAFFAA";
+    sTable.style.borderCollapse = "collapse"
+    sTable.style.textAlign = "center";
+    sBox.appendChild(sTable);
+
+	tr = document.createElement("TR");
+	sTable.appendChild(tr);
+
+	td = document.createElement("TD");
+	td.style.border = "1px solid #AAFFAA";
+	td.style.padding = "1pt";
+	addPara(td, "Pregunta");
+	tr.appendChild(td);
+
+	td = document.createElement("TD");
+	td.style.border = "1px solid #AAFFAA";
+	td.style.padding = "1pt";
+	addPara(td, "Corecta");
+	tr.appendChild(td);
+
+	td = document.createElement("TD");
+	td.style.border = "1px solid #AAFFAA";
+	td.style.padding = "1pt";
+	addPara(td, "Equivocada");
+	tr.appendChild(td);
+
+	var q, c;
+	var Q = Practice.subjects[CurrSubject].blocks[CurrBlock].questions;
+
+	// Loop over rows.
+	for(q=0; q<Q.length; q++)
+	{
+		tr = document.createElement("TR");
+		sTable.appendChild(tr);
+		// Loop over columns.
+		for(c=0; c<3; c++)
+		{
+			td = document.createElement("TD");
+			td.style.border = "1px solid #AAFFAA";
+			td.style.padding = "1pt";
+			td.id = "std" + q + "_" + c;
+			td.innerHTML = Q[q].score[c]; 
+			tr.appendChild(td);
+		}
+	}
 }
 
 function Practica()
@@ -317,6 +369,7 @@ function Practica()
     eBox.appendChild(eBlockSel);
 
     eSpan = document.createElement("SPAN");
+	eSpan.style.fontSize = "75%";
     eSpan.style.paddingLeft = "2em"
     eSpan.style.paddingRight = "1em"
     eBox.appendChild(eSpan);
@@ -393,4 +446,26 @@ function Practica()
     qBox.appendChild(qResult);
 
 	showQuestion();
+
+// Score box.
+
+	tr = document.createElement("TR");
+	table.appendChild(tr);
+
+	// Create cell in layout table for scores.
+	sBox = document.createElement("TD");
+	sBox.style.backgroundColor = "#DDFFDD";
+	sBox.style.border = "1px solid #AAFFAA";
+    sBox.style.padding = "10pt";
+	sBox.style.fontSize = "65%";
+	tr.appendChild(sBox);
+
+	// Initialize scores.
+	var s, b, q;
+	for(s=0; s<Practice.subjects.length; s++)
+	for(b=0; b<Practice.subjects[s].blocks.length; b++)
+	for(q=0; q<Practice.subjects[s].blocks[b].questions.length; q++)
+		Practice.subjects[s].blocks[b].questions[q].score = [q+1, 0, 0];		// Question, Right, Wrong
+
+	showScores();
 }

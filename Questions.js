@@ -51,6 +51,7 @@ function Question(type)
 	this.text = "";
 	this.options = [];
 	this.map = [];
+	this.score = [];
 
 	this.init = function()
 	{

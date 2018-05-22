@@ -62,6 +62,47 @@ Q.addText("Si quisieras observar a detalle los organelos de ua célula, ¿qué t
 Q.addOption("Ninguno, lo haría a simple vista", "Una lupa", "Un microscopio compuesto", "Un microscopio electrónico");
 Q.setAnswer(3);
 
+Q = B.addQuestion("choice");
+Q.addText("¿Cuál es el motivo por el cual se vuelven a presenta brotes de enfermedades que se creían erradicadas, como la tuberculosis?");
+Q.addOption("Por consumir medicamentos genéricos.");
+Q.addOption("La resistencia que las bacterias han desarrollado a ciertos antibióticos.");
+Q.addOption("No acudir al doctor cuando la persona se siente enferma.");
+Q.addOption("No aplicarse las vacunas respectivas.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("multiple");
+Q.addText("¿Las islas Galápago fueron esenciales en la elaboración del <I>Origen de las Especies</I>, de Charles Darwin, por cuales dos razones?");
+Q.addOption("La presencia de especies exclusivas.");
+Q.addOption("Especies con adaptaciones muy particulares.");
+Q.addOption("Especies fósiles exclusivas.");
+Q.addOption("Gran diversidad de especies.");
+Q.setAnswer([0, 1]);
+
+Q = B.addQuestion("choice");
+Q.addText("En el siguiente esquema, ¿qué observas?");
+Q.addText(htmlImage("FoodNetwork.jpg"));
+Q.addOption("La interacción de seres abióticos y bióticos.");
+Q.addOption("Una cadena alimentaria.");
+Q.addOption("Una red alimentaria.");
+Q.addOption("La relación de herbívoros y depredadores.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Al decir: \"Aprovechar mejor los recursos y satisfacer las necesidades de toda la población, procurando a las futuras generaciones\", estamos hablando de:");
+Q.addOption("Leyes de áreas naturales protegidas.");
+Q.addOption("Conservación de ecosistemas.");
+Q.addOption("Desarrollo sustentable.");
+Q.addOption("Ciclos biogeoquímicos.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Una causa frecuente de alteración ligada a las cadenas alimentarias o a las redes tróficas está asociada con...");
+Q.addOption("una elevación de la temperatura ambiental.");
+Q.addOption("la pérdida de biodiversidad.");
+Q.addOption("la contaminación atmosférica.");
+Q.addOption("la sobreexplotación de una especie.");
+Q.setAnswer(3);
+
 /******************************************************************************\
                                 Block 2
 \******************************************************************************/

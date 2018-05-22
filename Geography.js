@@ -334,3 +334,19 @@ Q = B.addQuestion("choice");
 Q.addText("La diversidad de culturas que se encuentran en un mismo territorio se llama");
 Q.addOption("Interculturalidad", "Multiculturalidad", "Multietnicidad", "Pluriculturalidad");
 Q.setAnswer(1);
+
+/******************************************************************************\
+                                Block 4
+\******************************************************************************/
+
+B = S.addBlock("Bloque 4");
+
+Q = B.addQuestion("choice");
+Q.addText("Organismo que se encarga de regir el comercio internacional."),
+Q.addOption("FMI.", "OMC", "ONU", "Banco Mundial"),
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("Entidades federativas que desarrollan el turismo histórico como el principal tipo de turismo."),
+Q.addOption("Yucatán y Guerrero.", "Jalisco y Nuevo León", "Guanajuato y Puebla", "Distrito Federal y Yucatán"),
+Q.setAnswer(2);
