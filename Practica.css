@@ -1,5 +1,6 @@
 
-.frac { display: inline-block;
+.frac {
+	display: inline-block;
     position: relative;
     vertical-align: middle;
     letter-spacing: 0.001em;
@@ -22,3 +23,15 @@ html * {font-family: arial, sans-serif}
 td {border-radius: 5px}
 
 table {width: 50%}
+
+img {padding: 1em}
+
+table.qt {
+	border-collapse: collapse;
+    margin: 1em;
+}
+
+th.qt, td.qt {
+	border: 1px solid #777777;
+	border-radius: 0px;
+}

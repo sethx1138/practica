@@ -79,11 +79,11 @@ Q.userInit = function()
 			minind = i;
 	}
 
-	var tstr = htmlTable(items);
+	var tstr = htmlTable(["Ingrediente", "Peso (Kg)"], items);
 	
 	this.addText(getRandElem(Names) + " y su hermana tienen un negocio de paella y necesitan algunos ingredientes que les falta.");
 	this.addText("¿Cuál es el ingrediente que tiene menor peso?");
-	this.addText("<BR><BR>" + tstr);
+	this.addText(tstr);
 
 	this.setAnswer(ingreds[minind]);
 }

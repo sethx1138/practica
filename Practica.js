@@ -245,7 +245,9 @@ function showQuestion()
 		qGroup.innerHTML = "";
 
     qTitle.innerHTML = "Pregunta " + (CurrQuestion + 1);
-    qText.innerHTML = Q.text + htmlList(Q.options, Q.map)
+    qText.innerHTML = Q.text;
+	if(Q.options.length > 0)
+		qText.innerHTML += htmlList(Q.options, Q.map)
     qResult.innerHTML ="Ingresa tu respuesta.";
 
     qInput.value = "";
@@ -457,8 +459,8 @@ function Practica()
     qText = document.createElement("P");
     qBox.appendChild(qText);
 
-    var br = document.createElement("BR");
-    qBox.appendChild(br);
+    //var br = document.createElement("BR");
+    //qBox.appendChild(br);
 
     qInput = document.createElement("INPUT");
     qInput.type = "text";

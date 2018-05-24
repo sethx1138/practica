@@ -103,21 +103,24 @@ function htmlList(arr, map)
 	return(list);
 }
 
-function htmlTable(arr)
+function htmlTable(hdr, arr)
 {
 	var i, j;
 	var nr = arr.length;
 	var nc = arr[0].length;
 
-	var table = "<TABLE border=1>";
+	var table = "<TABLE CLASS='qt'>";
 
-	table += "<TR><TD>Ingrediente</TD><TD>Peso (kg)</TD></TR>";
+	table += "<TR>";
+	for(j=0; j<nc; j++)
+		table += ("<TH CLASS='qt'>" + hdr[j] + "</TH>");
+	table += "</TR>";
 
-	for(i=1; i<nr; i++)
+	for(i=0; i<nr; i++)
 	{
 		table += "<TR>";
 		for(j=0; j<nc; j++)
-			table += "<TD>" + arr[i][j] + "</TD>";
+			table += ("<TD CLASS='qt'>" + arr[i][j] + "</TD>");
 		table += "</TR>";
 	}
 	table += "</TABLE>";

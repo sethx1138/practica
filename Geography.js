@@ -209,6 +209,44 @@ Q.setAnswer(3);
 B = S.addBlock("Bloque 2");
 
 Q = B.addQuestion("choice");
+Q.addText("Nombre de las placas tectónicas que están relacionadas con la actividad sísmica y volcánica de Japón.");
+Q.addOption("Africana e Indoaustraliana.");
+Q.addOption("Indoaustraliana y Arábiga.");
+Q.addOption("Eurasiática y Pacífica.");
+Q.addOption("Cocos y Caribe.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Capa interna de la Tierra donde se encuentran las placas tectónicas.");
+Q.addOption("Manto interior.", "Núcleo.", "Corteza terrestre.", "Astenósfera.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("Sistema de relieve formado a causa del tectonismo en la que se encuentra el punto más alto de la Tierra.");
+Q.addOption("Alpes.", "Himalaya.", "Pirineos.", "Sierra Madre Occidental.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("Tipo de erosión más frecuente en los desiertos.");
+Q.addOption("Fluvial.", "Eólica.", "Pluvial.", "Karstica.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("Mar que favorece el transporte entre continentes.");
+Q.addOption("Mediterráneo.", "Cortés.", "Del Norte.", "Atlántico.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Ríos que son fronteras de México.");
+Q.addOption("Suchiate y Bravo.", "Usumacinta y Pánuco.", "Coatzacoalcos y Grijalva.", "Hondo y Lerma.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Países cuyo clima es cálido debido a su latitud.");
+Q.addOption("Argentina y México.", "Estados Unidos y Canadá.", "India y Brasil.", "Sudáfrica y Uruguay.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
 Q.addText("El origen de la cordillera de los Andes en América del Sur se relaciona con");
 Q.addOption("los límites de placas tectónicas.");
 Q.addOption("las zonas de sismicidad");
@@ -252,11 +290,69 @@ Q.addOption("el movimiento de traslación y la inclinación del eje terrestre.")
 Q.addOption("el movimiento de rotación y la inclinación del eje terrestre.");
 Q.setAnswer(1);
 
+Q = B.addQuestion("choice");
+Q.addText("Elige la opción que completa de la forma más adecuada la siguiente frase: El ciclo del agua es");
+Q.addOption("la forma en la que el agua escurre hasta llegar al mar.");
+Q.addOption("la manera en la que el agua circula por la superficie del planeta y escurre hasta los océanos.");
+Q.addOption("el proceso por medio del cual el agua circula entre la litosfera, la atmósfera y la hidrosfera.");
+Q.addOption("un proceso que implica la evaporación y la lluvia.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("México es considerado primer lugar en su diversidad de");
+Q.addOption("reptiles", "mamíferos", "peces", "aves");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("La distribución de los climas y en consecuencia las regiones naturales que caracterizan se deben a la latitud y la _______.");
+Q.addOption("altitud", "incidencia de la luz de Sol", "inclinación del eje terrestre", "longitud");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Por sus condiciones naturales ¿Qué entidad recibe mayor cantidad de precipitación?");
+Q.addOption("Tamaulipas", "San Luis Potosí", "Yucatán", "Tabasco");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("Tipo de cuenca del río que desemboca en un lago, presa o laguna:");
+Q.addOption("parteaguas.", "arreica.", "exorreica.", "endorreica.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("El agua se presenta en tres estados: líquido, gaseoso y sólido.");
+Q.addText("Tambien puede ser salada o dulce.");
+Q.addText("¿Cuál es la reserva de agua dulce más importante de la Tierra?");
+Q.addOption("Los mantos acuíferos.", "Los lagos.", "Los ríos.", "Los polos y glacieres.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("La principal región volcánica en México se conforma por el Sistema Volcánico Transversal, que se extiende desde _______ hasta _______.");
+Q.addOption("Nayarit / Veracruz.", "Sonora / Chiapas.", "Chihuahua / Tabasco.", "Michoacán / Puebla.");
+Q.setAnswer(0);
+
 /******************************************************************************\
 								Block 3 
 \******************************************************************************/
 
 B = S.addBlock("Bloque 3");
+
+Q = B.addQuestion("choice");
+Q.addText("Continente con mayor número de habitantes");
+Q.addOption("América.", "África.", "Asia.", "Europa.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Principal causa de la concentración de la población en las ciudades.");
+Q.addOption("Falta de escuelas en los pueblos.");
+Q.addOption("Mejor oportunidad de empleo en las ciudades.");
+Q.addOption("Cercanía entre las ciudades y los pueblos.");
+Q.addOption("Mejores servicios médicos en las ciudades.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("Son los tres países más poblados del mundo.");
+Q.addOption("China, India y Japón.", "China, India y Estados Unidos de Ámerica.", "China, Pakistán e India.", "China, India y Alemania.");
+Q.setAnswer(1);
 
 Q = B.addQuestion("choice");
 Q.addText("¿Cuál opción  explica mejor la principla causa de pérdida de identidad nacional en los países?");
@@ -265,6 +361,18 @@ Q.addOption("La gente se interesa más por lo que sucede en el resto del mundo."
 Q.addOption("La llegada de habitantes de otros países infuluye en la cultura propia.");
 Q.addOption("La cultura de otros países es más rica que la del país de orígen.");
 Q.setAnswer(0);
+
+var hdr = ["Opción", "Entidad", "Población", "Superficie (km<SUP>2</SUP>)"];
+var data = [];
+data[0] = ["a", "Nuevo León", 4653458, 64156];
+data[1] = ["b", "Tlaxcala", 1169936, 3997];
+data[2] = ["c", "Estado de México", 15175862, 22351];
+data[3] = ["d", "Morelos", 1777227, 4879];
+
+Q = B.addQuestion("string");
+Q.addText("¿Qué entidad tiene una mayor <I>densidad</I> de población?");
+Q.addText(htmlTable(hdr, data));
+Q.setAnswer("c");
 
 Q = B.addQuestion("choice");
 Q.addText("Muchos países del mundo tienen una gran diversidad cultural gracias a la presencia");
@@ -275,7 +383,7 @@ Q.addOption("de étnias, lenguas y religones.");
 Q.setAnswer(3);
 
 Q = B.addQuestion("choice");
-Q.addText("Son las tres entidades más pobladas de México");
+Q.addText("Son las tres entidades más pobladas de México.");
 Q.addOption("Estado de México, Distrito Federal y Jalisco.");
 Q.addOption("Distrito Federal, Jalisco y Nuevo León.");
 Q.addOption("Estado de México, Distrito Federal y Veracruz.");
@@ -343,10 +451,34 @@ B = S.addBlock("Bloque 4");
 
 Q = B.addQuestion("choice");
 Q.addText("Organismo que se encarga de regir el comercio internacional."),
-Q.addOption("FMI.", "OMC", "ONU", "Banco Mundial"),
+Q.addOption("FMI", "OMC", "ONU", "Banco Mundial"),
 Q.setAnswer(1);
 
 Q = B.addQuestion("choice");
 Q.addText("Entidades federativas que desarrollan el turismo histórico como el principal tipo de turismo."),
-Q.addOption("Yucatán y Guerrero.", "Jalisco y Nuevo León", "Guanajuato y Puebla", "Distrito Federal y Yucatán"),
+Q.addOption("Yucatán y Guerrero", "Jalisco y Nuevo León", "Guanajuato y Puebla", "Distrito Federal y Yucatán"),
 Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Principal socio comercial de México."),
+Q.addOption("China", "España", "Estados Unidos de América", "Brasil"),
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Gran productor de petróleo, en comparación con los países de la región en la que se ubica."),
+Q.addOption("Libia", "Arabia Saudita", "Irán", "Venezuela"),
+Q.setAnswer(3);
+
+Q = B.addQuestion("multiple");
+Q.addText("Las <B>dos</B> transacciones que favorecen los ingresos de divisas al país son:"),
+Q.addOption("<B>El petróleo</B>: debido a que es un energético de fácil obtención y comercialización");
+Q.addOption("<B>Las remesas</B>: envíos de dinero desde el extranjero al interior del país");
+Q.addOption("<B>El turismo</B>: México cuenta con diversos espacios turísticos de fama mundial como Chichén Itzá");
+Q.addOption("<B>La industria maquiladora</B>: predomina en las entidades fronterizas");
+Q.setAnswer([0, 1]);
+
+Q = B.addQuestion("choice");
+Q.addText("Las entidades federativas con mayor producción de carne de res son:"),
+Q.addOption("Querétaro y Durango", "Michoacán y Jalisco", "Aguascalientes y Durango", "Veracruz y Jalisco"),
+Q.setAnswer(3);
+
