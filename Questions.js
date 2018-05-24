@@ -92,14 +92,20 @@ function Question(type)
 	}
 
 	// No arguments: use the saved value for the options.
-	// One argument: add argument to options.
-	// Many arguments: set options to arguments array.
+	// One argument (string): add string to options.
+	// One argument (array): set options to array.
+	// Many arguments: set options array to arguments array.
 	this.addOption = function()
 	{
 		if(arguments.length == 0)
 			this.options = SavedOptions;
 		else if(arguments.length == 1)
-			this.options.push(arguments[0]);
+		{
+			if(typeof(arguments[0]) == "object")
+				this.options = arguments[0];
+			else
+				this.options.push(arguments[0]);
+		}
 		else
 			this.options = arguments;
 	}

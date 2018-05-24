@@ -101,6 +101,59 @@ Q.userInit = function()
 	this.setAnswer(ans.toFixed(2));
 }
 
+var cakeGroupStr = "";
+var cakeOptions = [];
+
+function cakeInit()
+{
+	var a = getRand(5, 1, 9);
+	var m1 = getRand(1, 1, 3);
+	var m2 = getRand(m1+1, 1, 6);
+	var m3 = 10 - m2 - m1;
+
+	var names = getRandElems(Names, 3);
+
+	cakeGroupStr = names[0] + ", " + names[1] + " y " + names[2] + " cooperaron para comprar un pastel. ";
+	cakeGroupStr += (names[0] + " dio $" + m1*a + " pesos, " + names[1] + " $" + m2*a + " pesos y " + names[2] + " $" + m3*a + " pesos.");
+
+	cakeOptions[0] = htmlFraction(m1,10) + ", " + htmlFraction(m2,10) + " y " + htmlFraction(m3,10);
+	cakeOptions[1] = htmlFraction(1,3) + ", " + htmlFraction(1,3) + " y " + htmlFraction(1,3);
+	cakeOptions[2] = htmlFraction(m1,a) + ", " + htmlFraction(m2,a) + " y " + htmlFraction(m3,a);
+	cakeOptions[3] = htmlFraction(m1,5) + ", " + htmlFraction(m2,10) + " y " + htmlFraction(m3,15);
+}
+
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	cakeInit();
+
+	this.setGroup(cakeGroupStr);
+	this.addText("¿Qué proporción del pastel le tocó a cada uno, se repartieron en partes iguales?");
+	this.addOption(cakeOptions);
+	this.setAnswer(1);
+}
+
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	if(cakeGroupStr.length == 0) cakeInit();
+
+	this.setGroup(cakeGroupStr);
+	this.addText("¿Qué proporción del pastel le tocó a cada uno, se repartieron en de acuerdo de que cada quien pagó?");
+	this.addOption(cakeOptions);
+	this.setAnswer(0);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var a = getRand(3, 1, 6);
+	var s = getRand(4, 1, 6);
+
+	this.addText("¿Qué sigue en la sucesion de numeros: " + s*a + ", " + (s+1)*a + ", " + (s+2)*a + "... ?");
+	this.setAnswer((s+3)*a);
+}
+
 /******************************************************************************\
 								Block 2
 \******************************************************************************/
@@ -267,6 +320,24 @@ Q.userInit = function()
 
 B = S.addBlock("Bloque 3");
 
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var ind = getRand(0, 1, 2);
+	var btype = ["1 litro y medio", "2 litros y medio", "3 litros y medio"];
+	var bopts = [];
+
+	bopts[0] = [htmlFraction(3,4) + " L ", htmlFraction(1,2) + " L", "1" + htmlFraction(1,4) + " L", htmlFraction(4,5) + " L"];
+	bopts[1] = ["1" + htmlFraction(1,4) + " L", htmlFraction(2,3) + " L", "1" + htmlFraction(3,4) + " L ", "2" + htmlFraction(1,2) + " L"];
+	bopts[2] = ["1" + htmlFraction(3,4) + " L", "1" + htmlFraction(2,3) + " L", htmlFraction(3,2) + " L", "2" + htmlFraction(3,4) + " L "];
+
+	this.addText("Una botella de " + btype[ind] + " contiene agua a a mitad de su capacidad.");
+	this.addText("¿Qué cantidad de agua hay en la botella?");
+	this.addOption(bopts[ind]);
+ 
+	this.setAnswer(0);
+}
+
 Q = B.addQuestion("integer");
 Q.userInit = function()
 {
@@ -319,6 +390,33 @@ Q.userInit = function()
 	this.addText("¿Que distancia recorre en " + time1 + " horas?");
 
 	this.setAnswer(time1 * dist0 / time0);
+}
+
+Q = B.addQuestion("real");
+Q.userInit = function()
+{
+	var product = getRandElem(["arroz", "queso", "harina", "azúcar"]);
+	var price = getRand(1, 1, 6);
+
+	this.addText("El kilogramo de " + product + " cuesta $" + price + ".50 pesos.");
+	this.addText("¿Cuánto cuesta un kilo y medio?");
+
+	this.setAnswer((price+0.5)*1.5);
+}
+
+Q = B.addQuestion("real");
+Q.userInit = function()
+{
+	var name = getRandElem(Names);
+	var age = getRand(10, 1, 12);
+	var c0 = getRand(2, 1, 4);
+	var c1 = getRand(2, 1, 5);
+	var c2 = c0*age + c1;
+
+	this.addText("Si multiplicas por " + c0 + " la edad de " + name + ", más " + c1 + " es igual a " + c2 + " años.");
+	this.addText("¿Cuánto años tiene " + name + "?");
+
+	this.setAnswer(age);
 }
 
 /******************************************************************************\
