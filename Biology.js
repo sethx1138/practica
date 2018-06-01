@@ -347,7 +347,7 @@ Q.setAnswer(3);
 B = S.addBlock("Bloque 3");
 
 Q = B.addQuestion("choice");
-Q.addText("El calentamiento global es un término utilizado para referir el fenómeno del"),
+Q.addText("El calentamiento global es un término utilizado para referir el fenómeno del");
 Q.addText("aumento de la temperatura media global de la atmósfera terrestre y de los océanos.");
 Q.addText("¿Cuál de los siguientes gases es el prinipal responsable de dicho fenómeno.");
 Q.addOption("Dióxido de azufre", "Nitrógeno", "Dióxido de carbono", "Amoniaco");
@@ -355,34 +355,183 @@ Q.setAnswer(2);
 
 Q = B.addQuestion("choice");
 Q.setGroup("Enfermidades de los pulmones.");
-Q.addText("Se pierde la elasticidad del tejido pulmonar y hay destrucción progresiva de los alveolos."),
+Q.addText("Se pierde la elasticidad del tejido pulmonar y hay destrucción progresiva de los alveolos.");
 Q.addOption("Enfisema pulmonar", "Cáncer de los pulmones", "Asma", "Neumonía");
 Q.setAnswer(0);
 
 Q = B.addQuestion("choice");
 Q.setGroup();
-Q.addText("Se ocasiona por la proliferació de células que se reproducen sin control. Se causa por fumar cigarillos."),
+Q.addText("Se ocasiona por la proliferació de células que se reproducen sin control. Se causa por fumar cigarillos.");
 Q.addOption();
 Q.setAnswer(1);
 
 Q = B.addQuestion("choice");
 Q.setGroup();
-Q.addText("Inflamación de las vías respiratorias, se dificulta la respiración y se reproduce un silbido."),
+Q.addText("Inflamación de las vías respiratorias, se dificulta la respiración y se reproduce un silbido.");
 Q.addOption();
 Q.setAnswer(2);
 
 Q = B.addQuestion("choice");
 Q.setGroup();
-Q.addText("Infección producida por bacterias, virus y hongos."),
-Q.addText("Produce inflamación de los pulmones, los alveolos se llenan de flemas difcultando la respiración."),
+Q.addText("Infección producida por bacterias, virus y hongos.");
+Q.addText("Produce inflamación de los pulmones, los alveolos se llenan de flemas difcultando la respiración.");
 Q.addOption();
 Q.setAnswer(3);
 
 Q = B.addQuestion("multiple");
-Q.addText("De las siguientes afirmaciones, ¿cuáles tres se relacionan con el efecto invernadero?"),
+Q.addText("De las siguientes afirmaciones, ¿cuáles tres se relacionan con el efecto invernadero?");
 Q.addOption("El dióxido de carbono, el metano, los clorofluorocarburos y el ozono, son ejemplos de gases que absorben la radiación solar y el calor reflejado por la superficie terrestre.");
 Q.addOption("Las modificaciones en los patrones de lluvia y de cambios de temperatura, entre otros factores, provoca el efecto invernadero.");
 Q.addOption("El efecto inveradero es un proceso natural que permite un equilibrio en las temperaturas de nuestro planeta; sin embargo, en las últimas décadas este se ha visto afectado debido al aumento en las concentraciones de algunos gases producidos por las actividades humanas (clorofluorocarburos, óxidos de nitrógeno y ozono, entre otros.");
 Q.addOption("Es el aumento de la temperatura promedio de la atmósfera y de los océanos en todo el planeta.");
 Q.addOption("Parte de la radiación solar que llega a nuestro planeta es absorbida por el suelo y reflejada hacia la atmósfera en forma de calor.");
 Q.setAnswer([0, 2, 4]);
+
+/******************************************************************************\
+                                Block 5
+\******************************************************************************/
+
+B = S.addBlock("Bloque 5");
+
+Q = B.addQuestion("multiple");
+Q.addText("Son cuatro ejemplos de malos hábitos que pueden provocar enfermedades nutrícionales.");
+Q.addOption("Llevar una vida sedentaria.");
+Q.addOption("Consumir alimentos ricos en grasas saturadas.");
+Q.addOption("Realizar media hora de actividad física diariamente.");
+Q.addOption("Consumir alimentos con alto contenido de fibra.");
+Q.addOption("Ingerir más calorías de las que el cuerpo puede quemar.");
+Q.addOption("Falta de higiene y equilibrio en los alimentos que con consumimos.");
+Q.setAnswer([1, 3, 4, 5]);
+
+Q = B.addQuestion("multiple");
+Q.addText("Son cinco ejemplos de buenos habitos que permiten prevenir enfermidades respiratorias, sobre todo en época invernal.");
+Q.addOption("Saludar de beso o mano.");
+Q.addOption("Vacunarse contra la influenza estacional.");
+Q.addOption("Lavarse las manos frecuentamente.");
+Q.addOption("Asistir a lugares muy concurridos.");
+Q.addOption("Fumar en lugares cerrados.");
+Q.addOption("Exponerse a cambios de temperatura.");
+Q.addOption("Ventilar nuestros hogares y salones de clase.");
+Q.addOption("Comer frutas y verduras diariamente.");
+Q.addOption("Evitar actividades al aire libre cuando hay contingencia.");
+Q.setAnswer([1, 2, 6, 7, 8]);
+
+Q = B.addQuestion("choice");
+Q.addText("Método que permite evitar o retrasar el proceso de descomposición de los alimentos.");
+Q.addOption("Pasteurización", "Empacado", "Conservación", "Filtración");
+Q.setAnswer(2);
+
+Q = B.addQuestion("multiple");
+Q.addText("¿Cuáles tres de las siguientes prácticas agrícolas favorecen la conservación del ambiente?");
+Q.addOption("Uso de fertilizantes organofosforados", "Rotación de cultivos", "Uso de abonos orgánicos", "Establecimiento de monocultivos", "Fumigación de cultivos", "Manejo de cultivos mixtos");
+Q.setAnswer([1, 2, 5]);
+
+Q = B.addQuestion("multiple");
+Q.addText("¿Cuáles cinco de las siguientes acciones favorecen la reducción de desechos en la escuela y en el hogar?");
+Q.addOption("Utilizar pilas recargables.");
+Q.addOption("Uso de empaques e instrumentos de plástic y unicel.");
+Q.addOption("Usar bolsas de tela para cargar el mandado.");
+Q.addOption("Cambiar los equipos electrodomésticos regularmente.");
+Q.addOption("Utilizar papel reciclado.");
+Q.addOption("Separar los desechos para facilitar su reciclado.");
+Q.addOption("Preparar composta con los residuos orgánicos.");
+Q.addOption("Comprar comida para llevar en empaques de plástico.");
+Q.setAnswer([0, 2, 4, 5, 6]);
+
+Q = B.addQuestion("choice");
+Q.addText("Ordena los pasos para explicar un fenómeno o proceso que se desea estudiar en una investigación cientifica.");
+var invList = [];
+invList[0] = ["Análisis de resultados."];
+invList[1] = ["Desarrollo de explicaciones y comunicación de las mismas."];
+invList[2] = ["Identificación de un problema."];
+invList[3] = ["Realizar un experimento como comprobación."];
+invList[4] = ["Recolección de datos mediante la observación."];
+invList[5] = ["Elaboración de una hipótesis."];
+Q.addText(htmlList(invList, undefined, "I"));
+Q.addOption("III, V, VI, II, IV, I", "I, II, III, IV, V, VI", "III VI, V, IV, I, II", "II, IV, V");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("En la investigación cientifica es muy importante comprobar las hipótesis que se generan.");
+Q.addText("¿Cuáles son dos de las habilidades más utilizadas para dicha comprobación?");
+Q.addOption("Diseñar un experimento y elaborar un modelo.");
+Q.addOption("Hacer preguntas y elaborar un experimento.");
+Q.addOption("Identificar un problema y elaborar conclusiones.");
+Q.addOption("Comunicar las conclusiones obtenidas y hacer preguntas.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("multiple");
+Q.addText("¿Cuáles dos de las siguientes afirmaciones corresponden al concepto de diverdsidad biológica?");
+Q.addOption("Incluye la variedad de ecosistemas existentes en el planeta.");
+Q.addOption("Hace referencia a las diferencias físicas entre los individuos de una misma especie.");
+Q.addOption("Se refiere a las diferencias en el material genético de los organismos.");
+Q.addOption("Tiene en cuenta a las distintas especies que habitan el planeta.");
+Q.addOption("Es el conjunto de interacciones entre los seres vivos y sy ambiente.");
+Q.setAnswer([2, 3]);
+
+Q = B.addQuestion("choice");
+Q.setGroup("Relaciona el tipo de molécula orgánica con el proceso de descomposición que la afecta.");
+Q.addText("Carbohidratos");
+Q.addOption("Rancidez", "Fermentación", "Putrefacción");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Proteínas");
+Q.addOption();
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Grasas");
+Q.addOption();
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("La seguridad en casa depende principalmente de:");
+Q.addOption("todos los integrantes de la familia, con funciones asignadas.");
+Q.addOption("todos los integrantes de la familia, de manera homogénea.");
+Q.addOption("hermanos y primos.");
+Q.addOption("mamá y papá.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.setGroup("Elige el inciso correcto.");
+Q.addText("Modo rápido y eficaz de comunicar información y exponer los resultados de un proyecto.");
+Q.addOption("Folletos", "Panel de discusión", "Conferencias", "Periódico mural", "Cartel");
+Q.setAnswer(4);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Presentación oral de un tema por parte de un conocedor del mismo.");
+Q.addOption();
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Publicación de pocas hojas, que sirve para informar sobre un tema especifico.");
+Q.addOption();
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Pequeño grupo de personas que discuten un tema frente a una audiencia.");
+Q.addOption();
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Presentación escrita e ilustrada de una investigación completa a toda la comunidad.");
+Q.addOption();
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("Cuando se predice un posible suceso futuro con base en experiencias pasadas, se está hablando de:");
+Q.addOption("Hipótesis", "Elección del tema", "Observación", "Experimento");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Cuál de los siguientes eventos debe evitarse al momento en que sucede un accidente en un lugar público, por ejemplo, en la escuela?");
+Q.addOption("Llamar a un médico.", "No mover al accidentado.", "Juntarse con los demás alredador del accidentado.", "Apoyar al lesionado.");
+Q.setAnswer(2);
+

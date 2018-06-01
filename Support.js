@@ -85,11 +85,14 @@ function htmlImage(file)
 // Parameter "map" is optional array of indices into "arr".
 // Should be the same size as "arr".
 
-function htmlList(arr, map)
+function htmlList(arr, map, type)
 {
-	var i;
+	var i, list;
 
-	var list = "<OL type='a'>";
+	if(type === undefined)
+		type = "a";
+
+	list = "<OL type='" + type + "'>";
 
 	if(map === undefined)
 		for(i=0; i<arr.length; i++)
