@@ -535,3 +535,27 @@ Q.addText("¿Cuál de los siguientes eventos debe evitarse al momento en que suc
 Q.addOption("Llamar a un médico.", "No mover al accidentado.", "Juntarse con los demás alredador del accidentado.", "Apoyar al lesionado.");
 Q.setAnswer(2);
 
+Q = B.addQuestion("multiple");
+Q.addText("¿Cuando hablamos de programar actividades y elaborar la síntesis de un texto estamos refiriéndonos a cuales dos aspectos básicos del trabajo de investigación?");
+Q.addOption("Mapa conceptual.", "Plan de trabajo.", "Bitácora de resultados.", "Ficha de trabajo.", "Resumen.", "Folleto.");
+Q.setAnswer([1, 4]);
+
+Q = B.addQuestion("choice");
+Q.addText("Para generar tus preguntas e hipótesis es conveniente que reúnas información mínima del tema.");
+Q.addText("Puede servirte buscar en las fuentes de información que ya conoces: bibliográfica vivencial, de campo y experimental.");
+Q.addText("Esto se lleva a cabo durante...");
+Q.addOption("el planteamiento de la pregunta y la hipótesis del proyecto.");
+Q.addOption("el desarrollo del proyecto.");
+Q.addOption("la planeación del proyecto.");
+Q.addOption("la comunicación de resultados.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Una acción que ayuda a prevenir accidentes es:");
+Q.addOption("una medida de seguridad.", "una acción premeditada.", "una zona de riesgo.", "una acción correctiva.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("ordered");
+Q.addText("Ordena las secciones relacionadas con la elaboración de un quion que sirva de apoyo para la exposición de u trabajo ante el grupo.");
+Q.addOption("Objectivo", "Presentación de resultados", "Título", "Desarrollo de la investigación", "Introducción", "Conclusiones");
+Q.setAnswer([2, 0, 4, 3, 1, 5]);

@@ -156,7 +156,7 @@ function fmtReal(val)
 	return(val.toString());
 }
 
-function fmtInput(input)
+function fmtMultInput(input)
 {
 	var arr = input.toLowerCase().split(/[ ,]/).join("").split("");
 	arr.sort();
@@ -173,6 +173,21 @@ function fmtMultiple(arr, map)
 	return(tmp.sort().join(", "));
 }
 
+function fmtOrdInput(input)
+{
+	return(input.toLowerCase().split(/[ ,]/).join(", "));
+}
+
+function fmtOrdered(arr, map)
+{
+	var i, tmp=[];
+
+	for(i=0; i<arr.length; i++)
+		tmp[i] = String.fromCharCode(map.indexOf(arr[i]) + 97);
+
+	return(tmp.join(", "));
+}
+
 function checkAnswer(e)
 {
 	if(!e) var e = window.event;
@@ -187,7 +202,9 @@ function checkAnswer(e)
 	else if(Q.type == "choice")
 		match = (qInput.value.toLowerCase().charCodeAt(0) - 97 == Q.map.indexOf(Q.answer));
 	else if(Q.type == "multiple")
-		match = (fmtInput(qInput.value) == fmtMultiple(Q.answer, Q.map))
+		match = (fmtMultInput(qInput.value) == fmtMultiple(Q.answer, Q.map))
+	else if(Q.type == "ordered")
+		match = (fmtOrdInput(qInput.value) == fmtOrdered(Q.answer, Q.map))
 	else
 		match = (qInput.value == Q.answer);
 
@@ -271,6 +288,8 @@ function showAnswer()
 		qResult.innerHTML = "La respuesta es: " + String.fromCharCode(Q.map.indexOf(Q.answer) + 97);
 	else if(Q.type == "multiple")
 		qResult.innerHTML = "La respuesta es: " + fmtMultiple(Q.answer, Q.map);
+	else if(Q.type == "ordered")
+		qResult.innerHTML = "La respuesta es: " + fmtOrdered(Q.answer, Q.map);
 	else
 		qResult.innerHTML = "La respuesta es: " + Q.answer;
 }

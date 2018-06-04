@@ -68,9 +68,9 @@ function Question(type)
 			this.userInit();
 		}
 
-		// Create a random map to scramble the options
-		// for simple multiple-choice, and complex multiple-choice.
-		if(this.type == "choice" || this.type == "multiple")
+		// Create a random map to scramble the options for different
+		// multiple-choice types: simple, complex, and ordered.
+		if(this.type == "choice" || this.type == "multiple" || this.type == "ordered")
 		{
 			var i, ind, ret;
 
