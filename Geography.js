@@ -517,6 +517,14 @@ Q.addText("Reunión al nivel internacional que, en 1997, buscó crear conciencia
 Q.addOption("Protocolo de Montreal.", "Cumbre de la Tierra.", "Protocolo de Kioto.", "Convenio de Viena.");
 Q.setAnswer(2);
 
+Q = B.addQuestion("ordered");
+Q.addText("Ordena cronológicamente las leyes que se han formulado en nuestra país para el cuidado del medio ambiente.");
+Q.addOption("Ley General de Equilibrio Ecológico.");
+Q.addOption("Ley de Aguas Nacionales.");
+Q.addOption("Ley de Desarrollo Forestal Sustentable.");
+Q.addOption("Ley General de la Vida Silvestre.");
+Q.setAnswer([0, 3, 2, 1]);
+
 Q = B.addQuestion("choice");
 Q.setGroup("La legislación ambiental ha desarrollado diverentes políticas para el cuidado del medio ambiente. Relaciona el propósito con su política.");
 Q.addText("<B>Proposito:</B> Mejorar el desarrollo económico del país  y proteger sus recursos naturales y el medio ambiente.");
@@ -607,16 +615,12 @@ Q.addOption("<I>Disponibilidad:</I> la posición de la población para enfrentar
 Q.addOption("<I>Vulnerabilidad:</I> qué tan dañada puede resultar la población como consecuencia de fenómenos naturales o antropogénicos.");
 Q.setAnswer([0, 2]);
 
-Q = B.addQuestion("choice");
+Q = B.addQuestion("ordered");
 Q.addText("Las medidas de evaluación y prevención para evita ser víctima de un desastre son importantes.");
 Q.addText("Para estimar el riesgo del lugar en el que vivimos se debemos tomar en cuenta los siguientes aspectos:");
-var medList = ["Análisis de vulnerabilidad", "Identificación de peligros o riesgos", "Reparación de los daños", "Cálculo de posibles daños"];
-Q.addText(htmlList(medList, undefined, "1"));
-Q.addOption("4, 1, 2, 3");
-Q.addOption("3, 2, 4, 1");
-Q.addOption("1, 2, 3, 4");
-Q.addOption("2, 1, 4, 3");
-Q.setAnswer(3);
+Q.addText("¿Cuál es el orden de estos aspectos, para elaborar un plan de prevención de desastres?");
+Q.addOption(["Análisis de vulnerabilidad", "Identificación de peligros o riesgos", "Reparación de los daños", "Cálculo de posibles daños"]);
+Q.setAnswer([1, 0, 3, 2]);
 
 Q = B.addQuestion("choice");
 Q.addText("La identificación de factores de riesgo, el análisis de vulnerabilidad y la educación son una forma de...");
@@ -624,7 +628,107 @@ Q.addOption("conocer el desastre.", "prevenir el desastre", "mitigar el riesgo."
 Q.setAnswer(1);
 
 Q = B.addQuestion("choice");
-Q.addText("La elaboración de mapas de fen'omenos naturales relacionados con riegosgeológicos e hidrometeorológicos, son una forma de...");
+Q.addText("La elaboración de mapas de fenómenos naturales relacionados con riegos geológicos e hidrometeorológicos, son una forma de...");
 Q.addOption("conocer los riesgos.", "prevenir los desastres", "estudiar los desastres.", "atender los riesgos.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.setGroup("El Centro Nacional de Prevención de Desastres se enacarga de generar y difundir información acerca de los <B>fenómenos naturales o de origen humano</B>, que son relacionados con <B>situaciones de riesgo.</B>");
+Q.addText("Huracanes, inundaciones, tornados y sequías.");
+Q.addOption("Geológicos.", "Sanitarios.", "Químicos.", "Hidrometeorlógicos.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Las explosiones, fugas de materiales tóxicos y radioactivos.");
+Q.addOption();
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Propagación de una epidemia.");
+Q.addOption();
 Q.setAnswer(1);
 
+Q = B.addQuestion("choice");
+Q.setGroup();
+Q.addText("Sismos y erupciones volcánicas.");
+Q.addOption();
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Qué efectos puede acarrear un desastre?");
+Q.addOption("La desaparición de ingresos y egresos de la población.");
+Q.addOption("La incapacidad de que la población retome las condiciones de vida previas al desastre.");
+Q.addOption("La proliferación de enfermedades respiratorias, gastrointestinales, crónicas y epidemias.");
+Q.addOption("La migración de personas y la pérdida de comunicaciones.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("El primer paso para evitar daños ante los riesgos es:");
+Q.addOption("Establecer y respetar señales de urgencia en edificios públicos y zonas de seguridad fuera de ellos.");
+Q.addOption("Tener conocimiento sobre el tipo de riesgo a los que estamos expuestos.");
+Q.addOption("Acordar un lugar seguro para la familia.");
+Q.addOption("Conocer las medidas preventivas generales en caso de cualquier tipo de dasastre.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("¿La epidemia de A(H1N1) que sufrió México pertenece al qué tipo de riesgo?");
+Q.addOption("Geológicos.", "Sanitarios.", "Químicos.", "Hidrometeorlógicos.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("Son los principales factores de riesgo para la Ciudad de México.");
+Q.addOption("Huracanes y sismos.", "Erupciones volcánicas y huracanes.", "Sismos e inundaciones.", "Sismos y tornados.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Selecciona el país que tiene mayor grado de vulnerabilidad.");
+Q.addOption("Australia.", "Haití.", "Estados Unidos de América.", "Alemania.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("Se define como una seria perturbación del funcionamiento de la sociedad, que causa grandes pérdidas humanas, materiales, económica y medioambientales que exceden a la capacidad de la población de sobreponerse por sí sola.");
+Q.addOption("Terremoto.", "Huracán.", "Sismo.", "Desastre.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Cuál de las siguientes situaciones representa una población con mayor riesgo?");
+Q.addOption("Una población que vive cerca de un volcán activo.");
+Q.addOption("Una ciudad densamente poblada.");
+Q.addOption("Una población que vive en el centro de una planicie.");
+Q.addOption("Una ciudad con una ANP (Área Natural Protegida) en su centro.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Qué tipo de riesgo predomina en Tabasco?");
+Q.addOption("Geológicos.", "Sanitarios.", "Químicos.", "Hidrometeorlógicos.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("Institución que trabaja para resguardar a la población después de un desastre.");
+Q.addOption("Cenapred.", "SMN.", "Semarnat.", "Sedena.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("Si una pequeña población se asienta en las afueras de una ciudad, en donde predomina un relieve pronunciado y poca vegetación, ¿qué factor de riesgo puede provocar un desastre?");
+Q.addOption("Deslizamiento de tierra.", "Polvaredas.", "Tornado.", "Una sequía Una sequía intensa.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Se refiere a las condiciones socioeconómicas de la población.");
+Q.addOption("Riesgo.", "Desastre.", "Vulnerabilidad.", "Mitigación.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Es el ANP (Área Natural Protegida) más grande de México.");
+Q.addOption("Sierra La Laguna, Baja California Sur.");
+Q.addOption("Calakmul, Campeche.");
+Q.addOption("El Vizcaíno, Baja California Sur.");
+Q.addOption("Selva El Ocote, Chiapas.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Qué organismo internacional se encarga de proteger el patrimonio cultural de los pueblos?");
+Q.addOption("OPANAL.", "UNESCO.", "UNICEF.", "ONU.");
+Q.setAnswer(1);

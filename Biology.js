@@ -438,18 +438,15 @@ Q.addOption("Preparar composta con los residuos orgánicos.");
 Q.addOption("Comprar comida para llevar en empaques de plástico.");
 Q.setAnswer([0, 2, 4, 5, 6]);
 
-Q = B.addQuestion("choice");
+Q = B.addQuestion("ordered");
 Q.addText("Ordena los pasos para explicar un fenómeno o proceso que se desea estudiar en una investigación cientifica.");
-var invList = [];
-invList[0] = ["Análisis de resultados."];
-invList[1] = ["Desarrollo de explicaciones y comunicación de las mismas."];
-invList[2] = ["Identificación de un problema."];
-invList[3] = ["Realizar un experimento como comprobación."];
-invList[4] = ["Recolección de datos mediante la observación."];
-invList[5] = ["Elaboración de una hipótesis."];
-Q.addText(htmlList(invList, undefined, "I"));
-Q.addOption("III, V, VI, II, IV, I", "I, II, III, IV, V, VI", "III VI, V, IV, I, II", "II, IV, V");
-Q.setAnswer(2);
+Q.addOption("Análisis de resultados.");
+Q.addOption("Desarrollo de explicaciones y comunicación de las mismas.");
+Q.addOption("Identificación de un problema.");
+Q.addOption("Realizar un experimento como comprobación.");
+Q.addOption("Recolección de datos mediante la observación.");
+Q.addOption("Elaboración de una hipótesis.");
+Q.setAnswer([2, 5, 4, 3, 0, 1]);
 
 Q = B.addQuestion("choice");
 Q.addText("En la investigación cientifica es muy importante comprobar las hipótesis que se generan.");

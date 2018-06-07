@@ -466,6 +466,7 @@ function Practica()
     qBox.style.backgroundColor = "#FFDDDD";
     qBox.style.border = "1px solid #FFAAAA";
     qBox.style.padding = "10pt";
+    qBox.style.verticalAlign = "top";
     tr.appendChild(qBox);
 
     qGroup = document.createElement("P");
