@@ -149,7 +149,7 @@ Q.setGroup("Tipos de conservación en los alimentos con su procedimiento.");
 Q.addText("Son sometidos a temperaturas variables de 115 a 130 °C durante 15 o 30 minutos.");
 Q.addText("Esto asegura la conservación durante un periodo no inferior a las 48 h.");
 Q.addOption("Esterilización", "Refrigeración", "Pasteurización", "Congelación rápida", "Deshidratación");
-Q.setAnswer(0);
+Q.setAnswer(2);
 
 Q = B.addQuestion("choice");
 Q.setGroup();
@@ -490,7 +490,7 @@ Q.addOption("todos los integrantes de la familia, con funciones asignadas.");
 Q.addOption("todos los integrantes de la familia, de manera homogénea.");
 Q.addOption("hermanos y primos.");
 Q.addOption("mamá y papá.");
-Q.setAnswer(1);
+Q.setAnswer(0);
 
 Q = B.addQuestion("choice");
 Q.setGroup("Elige el inciso correcto.");
@@ -556,3 +556,154 @@ Q = B.addQuestion("ordered");
 Q.addText("Ordena las secciones relacionadas con la elaboración de un quion que sirva de apoyo para la exposición de u trabajo ante el grupo.");
 Q.addOption("Objectivo", "Presentación de resultados", "Título", "Desarrollo de la investigación", "Introducción", "Conclusiones");
 Q.setAnswer([2, 0, 4, 3, 1, 5]);
+
+Q = B.addQuestion("choice");
+Q.addText("Pedro asistió a una plática que dio uno de los mejores biólogos marinos, en la que comentó acerca de la repercusión del cambio climático sobre las redes tróficos del planeta.");
+Q.addText("Sin embargo, su pláctica se dio en un panel donde estaban otros investigadores.");
+Q.addText("Al final hubo un intercambio de ideas y se discutieron los puntos ahí vistos.");
+Q.addText("¿Cómo se le llama a este tipo de pláticas?");
+Q.addOption("Discurso", "Exposición", "Conferencia", "Ponencia");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("En el trabajo en equipo, se desarrollan varios proyectos de manera autónoma.");
+Q.addText("Además de la cooperación, ¿qué otra actividad se debe llevar a cabo para que se constituya un verdadero grupo de trabajo?");
+Q.addOption("Apoyo mutuo", "Discusión", "Imposición de reglas", "Coordinación");
+Q.setAnswer(3);
+
+Q = B.addQuestion("ordered");
+Q.addText("Elige las tres opciones en la secuencia correcta de pasos necesarios para facilitar el trabajo de planeación de un proyecto.");
+Q.addOption("Registrar tus resultados", "Buscar información", "Planear la actividad", "Dar a conocer tus conclusiones", "Escoger el tema de estudio", "Exponer la información");
+Q.setAnswer([4, 1, 2]);
+
+Q = B.addQuestion("choice");
+Q.addText("Una forma de prevenir un acciente en casa es:");
+Q.addOption("mantener las puertas cerradas.");
+Q.addOption("tener letreros de seguridad.");
+Q.addOption("barrer el piso de la casa todos los días.");
+Q.addOption("en la regadera, poner un tapete antiderrapante.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("multiple");
+Q.addText("Escoge dos fuentes de información donde puedas consultar medidas de prevención de accidentes.");
+Q.addOption("Enciclopedias", "Clínica de salud", "Libros sobre primeros auxilios", "Diccionario", "Internet");
+Q.setAnswer([1, 2]);
+
+Q = B.addQuestion("choice");
+Q.addText("Es importante que para la elaboración de un trabajo en equipo exista unión y empatía entre sus integrantes.");
+Q.addText("¿En qué benefica el desarrollo de estas capacidades al trabajo en equipo?");
+Q.addOption("Lograr a largo plazo una relación de amistad que permitirá terminar un trabajo.");
+Q.addOption("Que todos los integrantes aprendan sus fortalezas y debilidades para mejorar como profesionista.");
+Q.addOption("Tener una mejor organización para poder trabajar y exponer los resultados.");
+Q.addOption("Comprender a sus integrantes para apoyar las ideas que surjan en el desarrollo del trabajo.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("multiple");
+Q.addText("¿Los accidentes viales se han incrementado hasta en 20% debido a cuales tres factores?");
+Q.addOption("Al mal estado de las carreteras.");
+Q.addOption("A la lluvia y el mal tiempo.");
+Q.addOption("Al nulo respeto de los señalamientos y semáforos.");
+Q.addOption("A que no se usa el cinturón de seguridad.");
+Q.addOption("A que se exceden los límites de velocidad.");
+Q.addOption("A que el conductor sufre un infarto.");
+Q.setAnswer([2, 3, 4]);
+
+Q = B.addQuestion("choice");
+Q.addText("Cuando se reúnen todos los integrantes del equipo y elaboran una lista de lo que saben, lo que no saben y lo que necesitan saber en relación con el tema del poryecto; lo que están llevando a cabo es...");
+Q.addOption("el desarrollo del trabajo.");
+Q.addOption("la planeación del trabajo.");
+Q.addOption("un encuentro de ideas y conocimientos previos.");
+Q.addOption("organizar el trabajo.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("ordered");
+Q.addText("Ordena la secuencia de pasos que debes seguir durante la realización de un proyecto.");
+Q.addOption("Comunicación", "Planeación", "Autoevaluación", "Selección de tema", "Desarrollo");
+Q.setAnswer([3, 1, 4, 0, 2]);
+
+Q = B.addQuestion("multiple");
+Q.addText("De la siguiente lista elije tres herramientas que ayudan a organizar la información que recopila durante la elaboración de un proyecto.");
+Q.addOption("Mapa conceptual", "Plan de trabajo", "Bitácora de proyecto", "Ficha de trabajo", "Resumen", "Folleto");
+Q.setAnswer([0, 1, 3]);
+
+Q = B.addQuestion("choice");
+Q.addText("Cuando analizas lo que aprendiste y lo que lograste al desarrollar un proyecto, estás llevando a cabo...");
+Q.addOption("una crítica de tu trabajo.");
+Q.addOption("la síntesis del trabajo.");
+Q.addOption("la evaluación de resultados.");
+Q.addOption("el análisis del objetivo que planteaste al inicio del proyecto.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Se definen como hechos súbitos que dañan la salud,");
+Q.addText("son potencialmente prevenibles, afectan más a los hombres que a las mujeres y el alcohol es un factor clave.");
+Q.addOption("Los accidentes.", "Las defunciones.", "Los infartos.", "Las enfermedades.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Una herramienta de trabajo indispensable para el registro de tus resultados es...");
+Q.addOption("un panel de discusión.", "una ficha de trabajo.", "una bitácora.", "una conferencia.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("Es una propuesta aceptable que ha sido formulada con lo recolección de información y datos.");
+Q.addText("Aunque no está confirmada nos ayuda para responder de forma tentativa a un problema con base científica:");
+Q.addOption("Hipótesis", "Teoría", "Ley", "Conclusión");
+Q.setAnswer(0);
+
+Q = B.addQuestion("multiple");
+Q.addText("De estas dos fases depende que aumente la probabilidad de éxito al llevar a cabo un proyecto.");
+Q.addOption("Comunicación", "Planeación", "Autoevaluación", "Selección del tema", "Desarrollo");
+Q.setAnswer([1, 3]);
+
+Q = B.addQuestion("choice");
+Q.addText("Tú y tu equipo de trabajo hicieron un experimento para saber qué efecto tene la lluvia ácida sobre las plantas.");
+Q.addText("¿Qué nombre recibe el momento en el que <I>se comentan</I> los resultados obtenidos?");
+Q.addOption("Registro de resultados", "Discusión", "Obtención de conclusiones", "Análisis del método");
+Q.setAnswer(1);
+
+Q = B.addQuestion("ordered");
+Q.addText("Escoge la secuencia de los tres pasos que necesitas para facilitarte el trabajo de planeación de un proyecto:");
+Q.addOption("Registro tus resultados", "Buscar información", "Planear la actividad", "Dar a conocer tus conclusiones", "Escoger el tema de estudio", "Exponer la información");
+Q.setAnswer([4, 1, 2]);
+
+Q = B.addQuestion("choice");
+Q.addText("Juan, Pablo y Rita formaron un equipo y todos los días miden el crecimiento de unas plantas de espinaca que cultivaron en el huerto de la escuela.");
+Q.addText("Esta actividad se lleva a cabo durante...");
+Q.addOption("la experimentación.", "el planteamiento de hipótesis.", "el análisis de resultados.", "la elaboración de conclusiones.");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Cuando elaboran un cronograma de actividades, que servirá para organizar los trabajos y el tiempo que dedicarán a cada actividad, lo que están realizando es...");
+Q.addOption("un proceso de comunicación.", "el proyecto mismo.", "la planeación del trabajo.", "el desarrollo del trabajo.");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("La mejor forma para presenta tus resultados del proyecto de prevención de accidentes, para que tengan alto impacto en tu comunidad es...");
+Q.addOption("una conferencia", "una ficha de trabajo", "un mapa conceptual", "un resumen");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("Cuando terminas de exponer un trabajo frente al grupo de tu escuela y planteas tus puntos finales estamos hablando de:");
+Q.addOption("el análisis.", "las conclusiones.", "la discusión.", "los antecedentes.");
+Q.setAnswer(1);
+
+Q = B.addQuestion("choice");
+Q.addText("Revisando en internet en revistas científicas, encuentras la siguiente frase de u trabajo de investigación realizado por biólogos:");
+Q.addText("<I>\"Determinar la importancia del guajolote silvestre (Meleagrisgallopavo) en la Sierra de Aguascalientes\"</I>.");
+Q.addText("Esta frase se refiere a:");
+Q.addOption("El objetivo", "La conclusión", "El título", "El problema");
+Q.setAnswer(0);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Quiénes integrarían un trabajo en equipo?");
+Q.addOption("Los alumnos que designa el maestro.");
+Q.addOption("Un grupo de alumnos del mismo grado con los mismos conocimientos.");
+Q.addOption("Todo los alumnos que quieran participar en el equipo.");
+Q.addOption("Alumnos con conocimientos en materias específicas.");
+Q.setAnswer(3);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Qué nombre tiene un cuadro chico de cartulina en donde escribes las ideas principales de un libro o de otra fuente consultada?");
+Q.addOption("Periódico mural.", "Bitácora.", "Cartel.", "Ficha de trabajo.");
+Q.setAnswer(3);
