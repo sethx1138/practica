@@ -401,7 +401,7 @@ Q.addOption("Realizar media hora de actividad física diariamente.");
 Q.addOption("Consumir alimentos con alto contenido de fibra.");
 Q.addOption("Ingerir más calorías de las que el cuerpo puede quemar.");
 Q.addOption("Falta de higiene y equilibrio en los alimentos que con consumimos.");
-Q.setAnswer([1, 3, 4, 5]);
+Q.setAnswer([0, 1,  4, 5]);
 
 Q = B.addQuestion("multiple");
 Q.addText("Son cinco ejemplos de buenos habitos que permiten prevenir enfermidades respiratorias, sobre todo en época invernal.");
