@@ -491,6 +491,36 @@ Q.userInit = function()
 	this.setAnswer(age);
 }
 
+Q = B.addQuestion("real");
+Q.userInit = function()
+{
+	var ans = getRand(15, 1, 25);
+	var c0 = getRand(3, 0.1, 4);
+	var c1 = getRand(4, 0.2, 8);
+	var c2 = c1*ans + c0;
+
+	this.addText("Un taxi cobra $" + c1.toFixed(2) + " por km, más " + c0.toFixed(2) + " por viaje.");
+	this.addText("Una persona pago $" + c2.toFixed(2) + ".");
+	this.addText("¿Cuánto kilometros rcorrió el taxi?");
+
+	this.setAnswer(ans);
+}
+
+Q = B.addQuestion("real");
+Q.userInit = function()
+{
+	var A = getRand(11, 1, 20);
+	var B = getRand(5, 1, 10);
+	var C = getRand(21, 1, 30);
+	var ans = A/C;
+
+	this.addText("Un engranaje tiene tres ruedas diferentes:");
+	this.addText("la rueda A tiene " + A + " dientes, la rueda B tiene " + B + " dientes y la rueda C tiene " + C + " dientes.");
+	this.addText("Si A da tres vueltas, ¿Cuántos da C?");
+
+	this.setAnswer(ans);
+}
+
 /******************************************************************************\
 								Block 4
 \******************************************************************************/
