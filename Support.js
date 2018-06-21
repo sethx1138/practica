@@ -59,11 +59,28 @@ function getRandElems(arr, num)
 	return(sub);
 }
 
+// Random values in the range [start, stop].
+// That is up to, and including, the stop value.
 function getRand(start, step, stop, avoid)
 {
 	var val;
 
 	var nval = (stop-start)/step + 1;		// Number of possible values.
+
+	do {
+		val = start + step * Math.floor((nval*Math.random()));
+	} while(val == avoid);
+
+	return(val);
+}
+
+// Random values in the range [start, stop).
+// That is up to, but excluding, the stop value.
+function getRandExcl(start, step, stop, avoid)
+{
+	var val;
+
+	var nval = (stop-start)/step;		// Number of possible values.
 
 	do {
 		val = start + step * Math.floor((nval*Math.random()));

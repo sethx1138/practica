@@ -29,6 +29,21 @@ Q.userInit = function()
 	this.setAnswer(numer / denom);
 }
 
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var sequence = [1, 1, 2, 3, 5, 8, 13, 21];
+	var ind = Math.floor((sequence.length*Math.random()));
+	var ans = sequence[ind]
+
+	sequence[ind] = "__";
+
+	this.addText("Sucesión de Fibonacci: " + sequence.join(", "));
+	this.addText("¿Que número completa correctamente la sequencia?");
+
+	this.setAnswer(ans)
+}
+
 Q = B.addQuestion("real");
 Q.userInit = function()
 {
@@ -59,6 +74,45 @@ Q.userInit = function()
 	this.addText("¿Quién tiene mayor probabilidad de ganar el juego?");
 
 	this.setAnswer(n1);
+}
+
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var opts = [];
+
+	opts[0] = getRandExcl(0.001, 0.001, 0.01);	// [0.001, 0.01)
+	opts[1] = getRandExcl(0.01, 0.01, 0.05);	// [0.01, 0.05)
+	opts[2] = getRandExcl(0.05, 0.01, 0.1);		// [0.05, 0.1)
+	opts[3] = getRandExcl(0.1, 0.1, 0.5);		// [0.1, 0.5)
+
+	this.addText("¿Cuál número es menor?");
+	this.addOption(opts[0].toFixed(3));
+	this.addOption(opts[1].toFixed(2));
+	this.addOption(opts[2].toFixed(2));
+	this.addOption(opts[3].toFixed(1));
+
+	this.setAnswer(0);
+}
+
+
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var opts = [];
+
+	opts[0] = getRandExcl(0.001, 0.001, 0.01);	// [0.001, 0.01)
+	opts[1] = getRandExcl(0.01, 0.01, 0.05);	// [0.01, 0.05)
+	opts[2] = getRandExcl(0.05, 0.01, 0.1);		// [0.05, 0.1)
+	opts[3] = getRandExcl(0.1, 0.1, 0.5);		// [0.1, 0.5)
+
+	this.addText("¿Cuál número es mayor?");
+	this.addOption(opts[0].toFixed(3));
+	this.addOption(opts[1].toFixed(2));
+	this.addOption(opts[2].toFixed(2));
+	this.addOption(opts[3].toFixed(1));
+
+	this.setAnswer(3);
 }
 
 Q = B.addQuestion("string");
@@ -159,6 +213,24 @@ Q.userInit = function()
 \******************************************************************************/
 
 B = S.addBlock("Bloque 2");
+
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var opts = [];
+	var primes = [7, 11, 13, 17];
+
+	opts[0] = 2*3*5*getRandElem(primes)*getRandElem(primes);
+	opts[1] = 2*5*getRandElem(primes)*getRandElem(primes);
+	opts[2] = 3*5*getRandElem(primes)*getRandElem(primes);
+	opts[3] = 2*3*getRandElem(primes)*getRandElem(primes);
+
+	this.addText("¿Qué número es divisible entre 2, 3 y 5?");
+
+	this.addOption(opts);
+
+	this.setAnswer(0);
+}
 
 Q = B.addQuestion("real");
 Q.userInit = function()
