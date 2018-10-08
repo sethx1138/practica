@@ -135,3 +135,42 @@ Q.userInit = function()
 
 	this.setAnswer(time);
 }
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var velp = getRand(3, 5, 8);
+	var vele = getRand(5, 5, 10, velp);
+	var vel = velp + vele;
+
+	this.addText("Una persona sube por una escalera eléctrica con una rapidez de " + velp + " m/s.");
+	this.addText("La rapidez de la escalera es de " + vele + " m/s en la misma dirección.");
+	this.addText("¿Con qué rapidez total mueve la persona?");
+
+	this.setAnswer(vel);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var velt = getRand(50, 10, 150);
+	var velp = getRand(10, 10, 50, velt);
+	var vel = velt - velp;
+
+	this.addText("Un tren va una rapidez de " + velt + " km/h.");
+	this.addText("Una persona adentro el tren corre con rapidez de " + velp + " km/h hacia la cola del tren.");
+	this.addText("¿Con qué rapidez total mueve la persona?");
+
+	this.setAnswer(vel);
+}
+
+Q = B.addQuestion("choice");
+Q.addText("Se especifican la diferencia de posicion en una unidad de tiempo y la dirección.");
+Q.addText("¿De qué se trata?");
+Q.addOption("Rapidez", "Aceleración", "Velocidad", "Rapidez media");
+Q.setAnswer(2);
+
+Q = B.addQuestion("choice");
+Q.addText("¿Comó se llama la línea imaginaria que describe un objeto en movimiento?");
+Q.addOption("Sistema de referencia", "Linea de campo", "Desplazamiento", "Trayectoria");
+Q.setAnswer(3);
