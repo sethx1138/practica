@@ -89,6 +89,11 @@ function getRandExcl(start, step, stop, avoid)
 	return(val);
 }
 
+function htmlPower(v, p)
+{
+	return(v + "<sup>" + p + "</sup>");
+}
+
 function htmlFraction(a, b)
 {   
     return("<div class=\"frac\"> <span>" + a + "</span> <span class=\"symbol\">/</span> <span class=\"bottom\">" + b + "</span> </div>");
@@ -156,4 +161,93 @@ function addPara(node, str)
 	node.appendChild(p);
 
 	return(p);
+}
+
+// Format a polynomial in one variable.
+// "c" is an array of numbers for the coefficients.
+// "v" is a string containing the name of the variable (indeterminate).
+
+function htmlPolynomial(c, v)
+{
+	var str = [];
+	var tmp, o;
+	var sign, signOld;
+
+	// Format polynomial starting from highest order variable and corresponding coefficient.
+	signOld = 0;
+	for(o=0; o<c.length; o++)
+	{
+		sign = Math.sign(c[o]);
+
+		if(sign == 0) continue
+
+		// Show coefficient without sign, if neccessary.
+		if(o == 0 || sign*c[o] != 1)
+			tmp = sign*c[o];
+		else
+			tmp = "";
+
+		// Show indeterminate, if neccessary.
+		if(o == 1)
+			tmp = tmp + v;
+		else if(o > 1)
+			tmp = tmp + htmlPower(v, o);
+
+		if(signOld == 0 || o == 0)
+			str = tmp + str;
+		else if(signOld > 0)
+			str = tmp + " + " + str;
+		else if(signOld < 0)
+			str = tmp + " - " + str;
+
+		// Save sign.
+		signOld = sign;
+	}
+
+	if(signOld < 0) str = "-" + str;
+
+	//return(str);
+    return("<i>" + str + "</i>");
+}
+
+// Format a multivariable equation.
+// "c" is an array of coefficients (numbers).
+// "v" is an array of powers of variables (strings).
+
+function htmlEquation(c, v)
+{
+    var str = [];
+    var tmp, i;
+    var sign, signOld;
+
+    signOld = 0;
+    for(i=0; i<c.length; i++)
+    {
+        sign = Math.sign(c[i]);
+
+        if(sign == 0) continue
+
+        // Show coefficient without sign, if neccessary.
+        if(sign*c[i] != 1)
+            tmp = sign*c[i];
+        else
+            tmp = "";
+
+        tmp += v[i];
+
+        if(signOld == 0 || i == 0)
+            str = tmp + str;
+        else if(signOld > 0)
+            str = tmp + " + " + str;
+        else if(signOld < 0)
+            str = tmp + " - " + str;
+
+        // Save sign.
+        signOld = sign;
+    }
+
+    if(signOld < 0) str = "-" + str;
+
+    //return(str);
+    return("<i>" + str + "</i>");
 }
