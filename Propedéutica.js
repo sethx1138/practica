@@ -22,11 +22,11 @@ Q.userInit = function()
 	var opts = [];
 	var v = getRandElem(VARS);
 
-	var A0 = getRand(-9, 1, 9);
+	var A0 = getRand(-9, 1, 9, 0);
 	var A1 = getRand(-9, 1, 9, A0);
 	var eqA = htmlPolynomial([A0, A1], v);
 
-	var B0 = getRand(-9, 1, 9);
+	var B0 = getRand(-9, 1, 9, 0);
 	var B1 = getRand(-9, 1, 9, B0);
 	var eqB = htmlPolynomial([B0, B1], v);
 
@@ -139,6 +139,375 @@ Q.userInit = function()
 	this.setAnswer(0);
 }
 
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var eqStr;
+	var opts = [];
+	var a = [], c = [], d = [];
+	var v = getRandElem(VARS);
+	var i;
+
+	a[0] = a[2] = getRand(-5, 1, 5, 0);
+	a[1] = a[3] = getRand(-5, 1, 5, 0);
+
+	// Change the sign of one coefficient.
+	var s = getRand(0, 1, 4);
+	a[s] *= -1;
+
+	var c = [0, 0, a[0]*a[2], 0, a[1]*a[3]];
+
+	// Form a string of the form "(a₄*v⁴ + a₂*v²)".
+	eqStr = htmlPolynomial(c, v);
+	eqStr = "(" + eqStr + ")";
+
+	// Correct answer.
+	c = [0, a[0], a[1]];
+	d = [0, a[2], a[3]];
+	opts[0] = '(' + htmlPolynomial(c, v) + ')(' + htmlPolynomial(d, v) + ')';
+
+	// Incorrect answers.
+	for(i=0; i<4; i++)
+	{
+		a[i] *= -1;
+		c = [0, a[0], a[1]];
+		d = [0, a[2], a[3]];
+		opts[i+1] = '(' + htmlPolynomial(c, v) + ')(' + htmlPolynomial(d, v) + ')';
+		a[i] *= -1;
+	}
+
+	this.addText("Cuál es el resultado de factorización de la expresión " + eqStr + "?");
+	this.addOption(opts);
+
+	this.setAnswer(0);
+}
+
+function coefStrA(c)
+{
+	var str = "";
+
+	if(c == -1) str += "-";
+	else if(c != 1) str += c;
+
+	return(str);
+}
+
+function coefStrB(c)
+{
+	var str = "";
+	var s = Math.sign(c);
+
+	if(s > 0) str += " + ";
+	else str += " - ";
+
+	if(c != s) str += (s*c);
+
+	return(str);
+}
+	
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var eqStr;
+	var opts = [];
+	var a = [0, 0];
+	var c = [], v = [], vn = [];
+	var i;
+
+	// Get two variable names.
+	vn[0] = getRandElem(VARS);
+	vn[1] = getRandElem(VARS, vn[0]);
+
+	// Coefficients for question equation.
+	for(i=0; i<6; i++)
+		c[i] = getRand(-3, 1, 3, 0);
+
+	// v[i] is either 0 or 1, i = 0,1,2,3.
+	for(i=0; i<4; i++)
+		v[i] = getRand(0, 1, 1);
+
+	eqStr = "";
+	eqStr += coefStrA(c[0]) + vn[v[0]];
+	eqStr += coefStrB(c[1]) + "[";
+	eqStr += coefStrA(c[2]) + vn[v[1]];
+	eqStr += coefStrB(c[3]) + "(";
+	eqStr += coefStrA(c[4]) + vn[v[2]];
+	eqStr += coefStrB(c[5]) + vn[v[3]] + ")]";
+
+	// Form array of option strings.
+	for(i=0; i<5; i++)
+	{
+		// Change slightly the options, except option 0.
+		var r = [1, 1, 1, 1];
+		if(i>0) r[i-1] = -1;
+
+		a[0] = a[1] = 0;
+
+		a[v[0]] += r[0]*c[0];
+		a[v[1]] += r[1]*c[1]*c[2];
+		a[v[2]] += r[2]*c[1]*c[3]*c[4];
+		a[v[3]] += r[3]*c[1]*c[3]*c[5];
+
+		if(a[0] == 0 && a[1] == 0)
+			opts[i] = "0";
+		else
+		{
+			opts[i] = "";
+
+			if(a[0] != 0) opts[i] += (coefStrA(a[0]) + vn[0]);
+
+			if(a[1] != 0) opts[i] += (coefStrB(a[1]) + vn[1]);
+		}
+	}
+
+	this.addText("Al suprimir los símbolos de asociación y reducir los términos semejantes,");
+	this.addText("cuál es el resultado de factorización de la expresión algebraica " + eqStr);
+
+	this.addOption(opts);
+
+	this.setAnswer(0);
+}
+
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var opts = [];
+
+	var a = getRand(-5, 1, 5, 0)
+	var b = getRand(-5, 1, 5, 0)
+	var c = getRand(-5, 1, 5, 0)
+	var v = getRandElem(VARS);
+
+	var eqStr = "restarle " + a; 
+
+	if(b < 0) eqStr += " menos "; 
+	else eqStr += " más "; 
+
+	eqStr = eqStr + Math.abs(b) + v + " a ";
+
+	eqStr = eqStr + c + v;
+
+	opts[0] = htmlPolynomial([-a, c-b], v);
+	opts[1] = htmlPolynomial([a, -c+b], v);
+	opts[2] = htmlPolynomial([a, c+b], v);
+	opts[3] = htmlPolynomial([-a, c+b], v);
+
+	this.addText("Cuál es el resultado de " + eqStr + "?");
+
+	this.addOption(opts);
+
+	this.setAnswer(0);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var primes = [2, 3, 5, 7];
+
+	var n1 = getRandElem(primes);
+	var d1 = getRandElem(primes, n1);
+
+	var n2 = getRandElem(primes, n1);
+	var d2 = getRandElem(primes, n2);
+
+	var s = d2*n1*getRandElem(primes)*getRandElem(primes);
+
+	this.addText("Para una proporción de " + htmlFraction(n1, d1) + " se utilizan " + s + " gr de una sustancia.");
+	this.addText("¿Cuántos gramos se requiere para una proporción de " + htmlFraction(n2, d2) + "?");
+
+	this.setAnswer((s*n2*d1)/(d2*n1));
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var mult = ["unused", "mismo número", "doble", "triple"];
+	var snacks = getRandElem(["galletas", "dulces", "cacahuates", "uvas"]);
+
+	var a2 = getRand(1, 1, 3);
+	var p2 = getRand(5, 1, 15);
+
+	var a1 = getRand(1, 1, 3);
+	var p1 = a2*p2;
+
+	var b = getRand(1, 1, 10);
+	var p3 = a1*p1 + b;
+
+	var n = p1 + p2 + p3;
+
+	this.addText("Se reparten " + n + " " + snacks + " entre 3 platos distintos.");
+	this.addText("El primer plato tiene el " + mult[a2] + " de " + snacks + " que el segundo,");
+	this.addText("y el tercer plato tiene el " + mult[a1] + " de " + snacks + " que el primero más " + b + " " + snacks + ".");
+	this.addText("¿Cuántos " + snacks + " tiene el primer plato?");
+
+	this.setAnswer(p1);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var perfectTriangles = [ [9, 12, 15], [5, 12, 13], [7, 24, 25]];
+	var trigFunctions = ["coseno", "seno"];
+	var medir = ["altura", "sombra"];
+
+	var o = getRand(0, 1, 1);		// 0 or 1.
+	var func = trigFunctions[o];
+	var tri = getRandElem(perfectTriangles);
+
+	this.addText("Un edificio alto proyecta una sombra en el suelo, formando un triangulo de 90 grados.");
+	this.addText("El " + func + " del ángulo que se forma de la punta de la sombra hasta el edificio es " + htmlFraction(tri[o], tri[2]) + ".");
+	this.addText("El " + medir[o] + " del edificio mide " + tri[o] + ".");
+	this.addText("¿Cuánto mide la " + medir[1-o] + " del edificio?");
+
+	this.setAnswer(tri[1-o]);
+}
+
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var opts = [];
+
+	var a = getRand(10, 1, 20)
+	var b = getRand(1, 1, 6)
+	var c = getRand(1, 1, 6)
+	var v = getRandElem(VARS);
+
+	var eqStr1 = "(" + htmlPolynomial([b, 1], v) + ")";
+	var eqStr2 = "(" + htmlPolynomial([-c, 1], v) + ")";
+	var eqStr3 = " = " + a;
+
+	opts[0] = eqStr1 + eqStr2 + eqStr3;
+	opts[1] = eqStr1 + " + " + eqStr2 + eqStr3;
+	opts[2] = "2 × " + eqStr1 + eqStr2 + eqStr3;
+	opts[3] = eqStr1 + "²" + eqStr2 + "²" + eqStr3;
+
+	this.addText("La superficie de un rectángulo es de " + a + "m²,");
+	this.addText("su lado mayor es una cantidad más " + b + " unidades ");
+	this.addText("y su lado menor es la misma cantidad menos " + c + " unidades.");
+	this.addText("¿Cuál ecuación representa este problema?");
+
+	this.addOption(opts);
+
+	this.setAnswer(0);
+}
+
+var PropGroup = {
+	string: undefined,
+	questOld: undefined,
+	init: function(quest)
+	{
+		// First time a question in this group selected.
+		if(this.questOld == undefined)
+		{
+			this.questOld = quest;
+		}
+		// Previous question was other question in this group.
+		// Don't change common group text (i.e. return "undefined").
+		else if(quest != this.questOld)
+		{
+			this.questOld = quest;
+			return(undefined);
+		}
+
+		this.value = getRand(10, 10, 100);
+
+		var m = 1;
+		var body = [];
+		var header = ["Metros", "Costo ($)"];
+		var material = getRandElem(["tela", "cuerda", "madera"]);
+
+		for(i=0; i<4; i++)
+		{
+			m = getRand(m+1, 1, m+3);
+			body[i] = [m, m*PropGroup.value];
+		}
+
+		this.meters = getRand(m+1, 1, m+3);
+		this.cost = this.value * getRand(this.meters+1, 1, this.meters+3);
+
+		var tmpStr = "La tabla muestra el costo de una ";
+		tmpStr += material;
+		tmpStr += ".";
+		tmpStr += htmlTable(header, body);
+
+		return(tmpStr);
+	}
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	this.setGroup(PropGroup.init(0));
+
+	Q.addText("¿Cuál es el valor de proporcionalidad de esa mercancia?");
+
+	Q.setAnswer(PropGroup.value);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	this.setGroup(PropGroup.init(1));
+
+	this.addText("¿Cuánto cuesta " + PropGroup.meters + " metros de esa mercancia?");
+
+	this.setAnswer(PropGroup.meters*PropGroup.value);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	this.setGroup(PropGroup.init(2));
+
+	this.addText("¿Cuánto metros se compró de esa mercancia si se pagó $" + PropGroup.cost + "?");
+
+	this.setAnswer(PropGroup.cost/PropGroup.value);
+}
+
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var opts = [];
+	var v = getRandElem(VARS);
+	var a = [getRand(-5, 1, 5, 0), getRand(-5, 1, 5, 0)];
+	var b = a.slice();
+	var chg = getRand(0, 1, 1);
+
+	b[chg] = -b[chg];
+
+	var eqStr = "(" + htmlPolynomial(a, v);
+	eqStr = eqStr + ")(" + htmlPolynomial(b, v) + ")";
+
+	opts[0] = htmlPolynomial([a[0]*b[0], a[1]*b[1]], v);
+	opts[1] = htmlPolynomial([-a[0]*b[0], a[1]*b[1]], v);
+	opts[2] = htmlPolynomial([a[0]*b[0], -a[1]*b[1]], v);
+	opts[3] = htmlPolynomial([-a[0]*b[0], -a[1]*b[1]], v);
+
+	this.addText("¿Cuál es el producto de la expresión " + eqStr + "?");
+
+	this.addOption(opts);
+ 
+	this.setAnswer(0);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var mult = ["unused", "mismo número", "doble", "triple"];
+	var snacks = getRandElem(["galletas", "dulces", "cacahuates", "uvas"]);
+
+	mph = getRand(15, 1, 25);
+	h1 = getRand(2, 1, 4);
+	h2 = getRand(2, 1, 6, h1);
+ 
+	var n1 = h1 * mph;
+	var n2 = h2 * mph;
+
+	this.addText("Un adolescente envia " + n1 + " mensajes por celular en " + h1 + " horas.");
+	this.addText("¿Cuántas horas le tomará enviar " + n2 + " mensajes?");
+
+	this.setAnswer(h2);
+}
 /******************************************************************************\
 						Pensamiento Analítico
 \******************************************************************************/
@@ -210,18 +579,103 @@ Q.userInit = function()
 Q = B.addQuestion("integer");
 Q.userInit = function()
 {
-	var varNames = ["a", "b", "x", "y", "z"];
-	var vn = getRandElem(varNames);
+	var fs = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
+	var m = getRandExcl(1, 1, fs.length);
+	var i;
 
-	var ans = getRand(10, 10, 50);
-	var coef0 = getRand(10, 10, 50);
-	var coef1 = getRand(2, 1, 4);
+	var str = "Completa la serie de Fibonacci: ";
+	for(i=0; i<fs.length; i++)
+	{
+		if(i == m) str += "__";
+		else str += fs[i];
 
-	var rhs = coef1*ans + coef0;
+		if(i < fs.length-1) str += ", ";
+	}
+	this.addText(str + ".");
 
-	var equation = coef1 + vn + " + " + coef0 + " = " + rhs;
+	this.setAnswer(fs[m]);
+}
 
-	this.addText("¿Cuál es el valor de '" + vn + "' en la ecuación " + equation + "?");
+Q = B.addQuestion("choice");
+Q.userInit = function()
+{
+	var opts = [];
+	
+	var ntup = 2;					// Number of tuples to display.
+	var nopt = 4;					// Number of answer options.
 
-	this.setAnswer(ans);
+	var tnum = getRand(3, 1, 5);	// Size of tuple (3, 4, or 5).
+
+	var nbeg = getRand(-3, 1, 3);
+	var ninc = getRand(-2, 1, 2, 0);
+
+	var abeg = getRand(10, 1, 20);
+	var ainc = getRand(-1, 1, 1, 0);
+	var aloc = getRandExcl(0, 1, tnum);
+
+	n = nbeg;
+	a = abeg;
+	var ser = "";
+	for(i=0; i<ntup; i++)
+	{
+		for(j=0; j<tnum; j++)
+		{
+			if(j == aloc)		// Add next letter.
+			{
+				a += ainc;
+				ser += String.fromCharCode(65+a);
+			}
+			else				// Add next number.
+			{
+				n += ninc;
+				ser += n;
+			}
+
+			if(j < tnum-1) ser += ", ";
+		}
+
+		if(i < ntup)
+			ser += ", ";
+	}
+
+	// Save values for answer options.
+	nbeg = n;
+	abeg = a;
+
+	for(i=0; i<nopt; i++)
+	{
+		// Show same tuple in options, but slightly modified.
+		n = nbeg;
+		a = abeg;
+
+		opts[i] = "";
+		for(j=0; j<tnum; j++)
+		{
+			// Random values added to tuples for answer options (except first option,
+			// which is the correct one).
+			if(i == 0)
+				rinc = 0;
+			else
+				rinc = getRand(-1, 1, 1, 0);
+
+			if(j == aloc)		// Add next letter.
+			{
+				a += ainc;
+				opts[i] += String.fromCharCode(65+a+rinc);
+			}
+			else				// Add next number.
+			{
+				n += ninc;
+				opts[i] += (n+rinc);
+			}
+
+			if(j < tnum-1) opts[i] += ", ";
+		}
+	}
+
+	this.addText("¿Cuál opción da continuidad a la serie: " + ser + "?");
+
+	this.addOption(opts);
+
+	this.setAnswer(0);
 }
