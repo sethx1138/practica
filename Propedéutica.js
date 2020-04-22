@@ -1,5 +1,4 @@
 
-
 /******************************************************************************\
 						Propedéutica
 \******************************************************************************/
@@ -45,7 +44,7 @@ Q.userInit = function()
 	c = [2*A0 - 2*B0, 2*A1 - 2*B1];
 	opts[4] = htmlPolynomial(c, v);
 
-	this.addText("Cuál es el perímetro de un rectangulo que mide de base " + eqB + " y de alto " + eqA + ".");
+	this.addText("Cuál es el perímetro de un rectángulo que mide de base " + eqB + " y de alto " + eqA + ".");
 	this.addOption(opts);
 
 	this.setAnswer(0);
@@ -57,7 +56,7 @@ Q.userInit = function()
 	var c = [];
 	var opts = [];
 	var v = getRandElem(VARS);
-	var shape = getRandElem(["rectangulo", "triangulo"]);
+	var shape = getRandElem(["rectángulo", "triángulo"]);
 
 	var A0 = getRand(-6, 1, 6, 0);
 	var A1 = getRand(-6, 1, 6, 0);
@@ -68,7 +67,7 @@ Q.userInit = function()
 	var eqB = htmlPolynomial([B0, B1], v);
 
 	// Blend in the factor of 2 for the triangle.
-	if(shape == "triangulo")
+	if(shape == "triángulo")
 	{
 		B0 /= 2;
 		B1 /= 2;
@@ -354,7 +353,7 @@ Q.userInit = function()
 	var func = trigFunctions[o];
 	var tri = getRandElem(perfectTriangles);
 
-	this.addText("Un edificio alto proyecta una sombra en el suelo, formando un triangulo de 90 grados.");
+	this.addText("Un edificio alto proyecta una sombra en el suelo, formando un triángulo de 90 grados.");
 	this.addText("El " + func + " del ángulo que se forma de la punta de la sombra hasta el edificio es " + htmlFraction(tri[o], tri[2]) + ".");
 	this.addText("El " + medir[o] + " del edificio mide " + tri[o] + ".");
 	this.addText("¿Cuánto mide la " + medir[1-o] + " del edificio?");
@@ -508,6 +507,180 @@ Q.userInit = function()
 
 	this.setAnswer(h2);
 }
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var nFamília = getRand(3, 1, 7);
+	var nComió = getRand(2, 1, 3);
+	var nPastel = getRand(2, 1, 6);
+	var nNiños = getRand(2, 1, 3);
+	var nPapás = getRand(2, 1, 3);
+	var nMamá = getRand(8, 1, 12);
+	var nQuedó = getRand(5, 1, 15);
+
+	var nTotal = nQuedó + nFamília*nComió + nPastel + (nFamília-2)*nNiños + 2*nPapás - nMamá;
+ 
+	this.addText("Una família de " + nFamília + " integrantes tenia " + nTotal + " manzanas.");
+	this.addText("Cada miembro de la família se comió " + nComió + " manzanas y " + nPastel + " se utilizaron para un pastel.");
+	this.addText("Posteriormente cada niño se las llevó " + nNiños + " manzanas a la escuela,");
+	this.addText("y cada papá se las llevó " + nPapás + " de las manzanas a su trabajo.");
+	this.addText("La mamá regresó a la casa con " + nMamá + " más que compró en la tienda.");
+	this.addText("¿Cuántas manzanas quedaron?");
+
+	this.setAnswer(nQuedó);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var v = getRandElem(VARS);
+	var a = [], b = [];
+
+	for(i=0; i<2; i++)
+	{
+		do {
+			a[i] = getRand(-5, 1, 5, 0);
+			b[i] = getRand(-5, 1, 5, 0);
+		} while(a[i] == b[i])
+	}
+
+	var den = a[1] - b[1];
+	var ans = b[0] - a[0];
+
+	a[0] *= den;
+	b[0] *= den;
+
+	var eqStr = htmlPolynomial(a, v) + " = " + htmlPolynomial(b, v);
+
+	this.addText("¿Cuál es el resultado (valor de " + v + ") de la ecuación " + eqStr + "?");
+
+	this.setAnswer(ans);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var inc = getRand(0, 1, 1);
+	var s = getRand(10+inc, 2, 20+inc, 0);
+	var d = getRand(2+inc, 2, 8+inc, 0);
+	var prod = (s*s - d*d)/4;
+
+	this.addText("La suma de 2 números es " + s + " y su diferencia es " + d + ".");
+	this.addText("¿Cuál es su producto?");
+
+	this.setAnswer(prod);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var sizes = [];
+	var count = [];
+	var nSold = getRand(8, 1, 12);
+	var szBeg = 21;
+	var szEnd = 27;
+	var szMode = getRand(szBeg, 1, szEnd);
+	var i, sz;
+
+	for(i=szBeg; i<=szEnd; i++)
+		count[i] = 0;
+
+	var lstr = "";
+	for(i=0; i<nSold; i++)
+	{
+		sz = getRand(szBeg, 1, szEnd);
+
+		// Make sure there is just one size for the statistical mode.
+		if(sz != szMode && count[sz]+1 >= count[szMode])
+			sz = szMode;
+
+		sizes[i] = sz;
+		count[sz]++;
+	}
+
+	shuffle(sizes);
+
+	for(i=0; i<nSold; i++)
+	{
+		lstr += sizes[i];
+		if(i < nSold-1) lstr += ", ";
+	}
+
+	this.addText("En una zapatería se vendieron el día de hoy " + nSold + " pares de zapatos de las siguientes medidas: " + lstr + ".");
+	this.addText("¿Qué es la moda del conjunto de datos?");
+
+	this.setAnswer(szMode);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var ncolors = getRand(1, 1, 4);
+	var nsocks = getRand(6, 2, 10);
+
+	this.addText("En el cajon de la cómoda hay " + ncolors + " colores de calcetines.");
+	this.addText("De cada color hay " + nsocks + " calcetines.");
+	this.addText("Sin dirigir la mirada hacia los calcetines ");
+	this.addText("¿Cuál es el menor número de calcetines que se debe sacar para estar seguro de haber sacado un par de color igual?");
+
+	this.setAnswer(ncolors+1);
+}
+
+Q = B.addQuestion("integer");
+Q.userInit = function()
+{
+	var pythagoreanTriples = [ [3, 4, 5], [5, 12, 13], [7, 24, 25], [8, 15, 17], [9, 40, 41], [11, 60, 61] ];
+	var triangle = getRandElem(pythagoreanTriples);
+	var base = getRand(0, 1, 1);
+
+	var b = triangle[base];
+	var a = triangle[1-base];
+	var h = triangle[2];
+
+	var area = (a*b)/2;
+
+	this.addText("Un triángulo rectángulo tiene unu hipotenusa de " + h + "m y su base mide " + b + "m.");
+	this.addText("Determina el área del triángulo.");
+
+	this.setAnswer(area);
+}
+
+Q = B.addQuestion("real");
+Q.userInit = function()
+{
+	var ap = getRand(1, 1, 3);		// Height of small tree.
+	var sp = getRand(ap, 1, 5);		// Shadow of small tree (longer than its height).
+	var sg = getRand(sp+5, 1, 15);	// Shadow of large tree (longer than small tree).
+	var ag = ap*sg/sp				// Height of large tree
+
+	this.addText("Un jardinero quiere medir la altura de un arbol grande que es demasiado alto para su cinta de medir.");
+	this.addText("Se le ocurre que se puede sacar esta medida utilizando la altura de un arbol pequeño y la sombras de los dos arboles.");
+	this.addText("La sombra del arbol grande es " + sg + "m y del arbol pequeño " + sp + "m.");
+	this.addText("La altura del arbol pequeño es " + ap + "m.");
+	this.addText("¿Cuál es la altura del arbol grande?");
+
+	this.setAnswer(ag);
+}
+
+Q = B.addQuestion("real");
+Q.userInit = function()
+{
+	var funcs = ["coseno", "seno"];
+	var f = getRand(0, 1, 1);
+
+	var a = getRand(1, 1, 5);		// One side.
+	var h = getRand(a, 1, 7);		// Hypotenuse.
+
+	var ah = a/h;
+	var bh = Math.sqrt(1-(ah*ah));
+
+	this.addText("El " + funcs[f] + " de un triángulo rectángulo es " + fmtReal(ah) + ".");
+	this.addText("¿Cuál es el " + funcs[1-f] + "del triángulo?");
+
+	this.setAnswer(bh);
+}
+
 /******************************************************************************\
 						Pensamiento Analítico
 \******************************************************************************/
